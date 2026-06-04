@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Climate Smart Accelerator | ಹವಾಮಾನ ಸ್ಮಾರ್ಟ್ ಆಕ್ಸಿಲರೇಟರ್</title>
+<meta name="description" content="6-month programme helping Karnataka farming collectives earn more, build enterprise, and grow climate-resilient. Apply by June 30, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Noto+Sans+Kannada:wght@400;600;700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F5F9F5; --forest:#1A5C36; --grove:#2D8653; --green:#40916C;
+  --leaf:#52B788; --mint:#B7E4C7; --pale:#D8F3DC; --mist:#EAF4EE;
+  --amber:#F4A261; --saffron:#E76F51; --gold:#C8920A;
+  --sky:#219EBC; --skylt:#ADE8F4;
+  --cream:#FFFBF2; --straw:#FEF3DC;
+  --ink:#0D1F13; --slate:#2D4A3E; --gray:#6B7B71;
+  --lgray:#E0EAE4; --white:#FFFFFF;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+.kn{font-family:"Noto Sans Kannada","DM Sans",sans-serif}
+[data-lang="en"] .kn-only{display:none!important}
+[data-lang="kn"] .en-only{display:none!important}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:linear-gradient(var(--saffron),var(--amber));border-radius:99px}
+#pgbar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--grove),var(--amber),var(--saffron));z-index:9999;transition:width .1s linear}
+
+/* NAV */
+nav{position:fixed;top:3px;left:0;right:0;z-index:700;display:flex;align-items:center;justify-content:space-between;padding:0 2.5rem;height:64px;background:rgba(26,92,54,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(82,183,136,.14)}
+.nav-brand{display:flex;align-items:center;gap:.6rem}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--amber);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.55)}}
+.nb{display:flex;flex-direction:column;line-height:1.2}
+.nb-en{font-family:"DM Mono",monospace;font-size:.66rem;color:var(--mint);letter-spacing:.08em;text-transform:uppercase}
+.nb-kn{font-family:"Noto Sans Kannada",sans-serif;font-size:.6rem;color:rgba(183,228,199,.5);margin-top:.05rem}
+.nav-mid{display:flex;align-items:center;gap:1.8rem}
+.nav-mid a{color:rgba(255,255,255,.6);font-size:.82rem;font-weight:500;transition:color .2s}
+.nav-mid a:hover{color:var(--amber)}
+.nav-right{display:flex;align-items:center;gap:.9rem}
+.lang-sw{display:flex;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:100px;padding:2px;overflow:hidden}
+.lbtn{padding:.3rem .72rem;border-radius:100px;font-size:.71rem;font-weight:600;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.5);font-family:"DM Sans",sans-serif;transition:all .2s}
+.lbtn.on{background:var(--amber);color:var(--forest)}
+.lbtn-kn{font-family:"Noto Sans Kannada",sans-serif;font-size:.73rem}
+.nav-app{background:linear-gradient(135deg,var(--saffron),var(--amber));color:white;padding:.46rem 1.2rem;border-radius:6px;font-weight:700;font-size:.82rem;transition:all .2s;box-shadow:0 3px 12px rgba(231,111,81,.35)}
+.nav-app:hover{transform:translateY(-1px);box-shadow:0 5px 18px rgba(231,111,81,.5)}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hbg span{display:block;width:22px;height:2px;background:white;transition:.3s}
+.mob{display:none;position:fixed;top:67px;left:0;right:0;background:rgba(26,92,54,.98);padding:1.2rem 2rem;z-index:699;border-bottom:2px solid rgba(82,183,136,.12)}
+.mob a{display:block;padding:.7rem 0;color:rgba(255,255,255,.68);font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.mob .mapp{color:var(--amber)!important;font-weight:700;border:none;margin-top:.35rem}
+.mob.open{display:block}
+.mob-lsw{display:flex;gap:.5rem;padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.mob-lsw button{padding:.28rem .82rem;border-radius:100px;font-size:.73rem;font-weight:600;cursor:pointer;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.55)}
+.mob-lsw button.on{background:var(--amber);color:var(--forest);border-color:var(--amber)}
+.fcta{position:fixed;bottom:1.5rem;right:1.5rem;z-index:600;background:linear-gradient(135deg,var(--saffron),var(--amber));color:white;font-weight:700;font-size:.86rem;padding:.75rem 1.45rem;border-radius:100px;box-shadow:0 6px 26px rgba(231,111,81,.4);display:flex;align-items:center;gap:.4rem;opacity:0;transform:translateY(16px);pointer-events:none;transition:all .35s var(--ease)}
+.fcta.show{opacity:1;transform:none;pointer-events:all}
+.fcta:hover{transform:translateY(-2px)}
+
+section{padding:5.5rem 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 2rem}
+.lbl{font-family:"DM Mono",monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--grove);margin-bottom:.55rem;display:block}
+.h2{font-family:"Playfair Display",serif;font-size:clamp(1.75rem,3.3vw,2.55rem);font-weight:900;line-height:1.12;color:var(--ink);margin-bottom:.28rem}
+.h2kn{font-family:"Noto Sans Kannada",sans-serif;font-size:clamp(1.05rem,2vw,1.42rem);font-weight:700;color:var(--green);line-height:1.38;margin-bottom:.72rem}
+.sub{font-size:.97rem;color:var(--gray);line-height:1.78;max-width:580px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.rv.on{opacity:1;transform:none}
+.rv.d1{transition-delay:.1s}.rv.d2{transition-delay:.18s}.rv.d3{transition-delay:.26s}
+
+/* HERO */
+.hero{min-height:100vh;background:linear-gradient(150deg,#081C15 0%,#1A5C36 45%,#0D2B1F 100%);display:grid;grid-template-columns:58% 42%;position:relative;overflow:hidden}
+.hero-mesh{position:absolute;inset:0;background-image:radial-gradient(rgba(82,183,136,.07) 1px,transparent 1px);background-size:32px 32px}
+.ho{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.o1{width:500px;height:500px;top:-90px;right:-70px;background:rgba(45,134,83,.3)}
+.o2{width:300px;height:300px;bottom:0;left:22%;background:rgba(244,162,97,.1)}
+.hero-l{padding:9rem 3.5rem 4rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+.hbadge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(82,183,136,.1);border:1px solid rgba(82,183,136,.25);color:var(--mint);padding:.38rem 1rem;border-radius:100px;font-size:.67rem;font-family:"DM Mono",monospace;letter-spacing:.07em;text-transform:uppercase;margin-bottom:1.6rem;width:fit-content;animation:fu .7s var(--ease) both}
+.hero-h1{font-family:"Playfair Display",serif;font-size:clamp(2.3rem,4.2vw,3.6rem);font-weight:900;line-height:1.07;color:white;margin-bottom:.35rem;animation:fu .7s .1s var(--ease) both}
+.hero-h1 em{font-style:normal;color:var(--amber)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.62);line-height:1.72;max-width:440px;margin-bottom:1.8rem;animation:fu .7s .18s var(--ease) both}
+.hero-sub-kn{font-family:"Noto Sans Kannada",sans-serif;font-size:.88rem;color:rgba(183,228,199,.58);line-height:1.7;max-width:440px;margin-bottom:1.8rem;animation:fu .7s .22s var(--ease) both}
+.hbtns{display:flex;gap:.85rem;flex-wrap:wrap;animation:fu .7s .28s var(--ease) both}
+.bprimary{background:linear-gradient(135deg,var(--saffron),var(--amber));color:white;padding:.88rem 1.95rem;border-radius:7px;font-weight:700;font-size:.94rem;display:inline-flex;align-items:center;gap:.45rem;box-shadow:0 4px 20px rgba(231,111,81,.35);transition:all .22s}
+.bprimary:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(231,111,81,.48)}
+.bghost{background:rgba(255,255,255,.07);color:rgba(255,255,255,.8);border:1.5px solid rgba(255,255,255,.25);padding:.88rem 1.95rem;border-radius:7px;font-weight:500;font-size:.94rem;transition:all .22s}
+.bghost:hover{border-color:rgba(255,255,255,.55);color:white;background:rgba(255,255,255,.12)}
+.hnums{margin-top:2.8rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.1);display:flex;gap:2.1rem;animation:fu .7s .35s var(--ease) both}
+.hn .n{font-family:"Playfair Display",serif;font-size:2.4rem;font-weight:900;color:var(--amber);line-height:1}
+.hn .le{font-size:.67rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.06em;margin-top:.2rem}
+.hn .lk{font-family:"Noto Sans Kannada",sans-serif;font-size:.6rem;color:rgba(183,228,199,.4);margin-top:.1rem}
+.hero-r{display:flex;flex-direction:column;justify-content:flex-end;padding:2.5rem;position:relative;z-index:2;overflow:hidden}
+.hrdots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.045) 1px,transparent 1px);background-size:22px 22px}
+.hcard{background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:1.85rem;backdrop-filter:blur(14px);position:relative;z-index:2;animation:fu .7s .42s var(--ease) both}
+.hctop{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
+.hctop span{font-family:"DM Mono",monospace;font-size:.64rem;color:var(--mint);text-transform:uppercase;letter-spacing:.09em}
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.35rem}
+.pill{padding:.27rem .8rem;border-radius:100px;font-size:.75rem;font-weight:500;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.82)}
+.pg{background:rgba(64,145,108,.3)}.po{background:rgba(231,111,81,.25);border-color:rgba(244,162,97,.25);color:var(--amber)}.ps{background:rgba(33,158,188,.22);border-color:rgba(173,232,244,.2);color:var(--skylt)}
+.dlbox{background:linear-gradient(135deg,var(--saffron),var(--amber));border-radius:11px;padding:1rem 1.3rem;display:flex;align-items:center;gap:1.1rem;box-shadow:0 5px 22px rgba(231,111,81,.3);color:white}
+.dln{font-family:"Playfair Display",serif;font-size:1.72rem;font-weight:900;line-height:1}
+.dly{font-size:.62rem;opacity:.62;margin-top:.1rem}
+.dle{font-size:.77rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.dlk{font-family:"Noto Sans Kannada",sans-serif;font-size:.75rem;margin-top:.18rem;opacity:.84}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* ABOUT STRIP */
+.astrip{background:linear-gradient(135deg,var(--forest),var(--grove));padding:4rem 0;position:relative;overflow:hidden}
+.astrip::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(82,183,136,.06) 1px,transparent 1px);background-size:24px 24px}
+.ain{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;position:relative;z-index:2}
+.atxt h3{font-family:"Playfair Display",serif;font-size:1.55rem;font-weight:900;color:white;margin-bottom:.18rem}
+.atxt .akn{font-family:"Noto Sans Kannada",sans-serif;font-size:.98rem;color:var(--mint);font-weight:700;margin-bottom:.8rem;display:block}
+.atxt p{font-size:.93rem;color:rgba(255,255,255,.62);line-height:1.8}
+.atxt .pkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.85rem;color:rgba(183,228,199,.62);line-height:1.75;margin-top:.48rem;padding:.5rem .82rem;border-left:2px solid rgba(82,183,136,.4)}
+.anums{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.an{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:11px;padding:1.45rem;text-align:center;transition:background .22s}
+.an:hover{background:rgba(255,255,255,.12)}
+.ann{font-family:"Playfair Display",serif;font-size:2.75rem;font-weight:900;line-height:1;display:block}
+.an:nth-child(1) .ann,.an:nth-child(3) .ann{color:var(--amber)}
+.an:nth-child(2) .ann,.an:nth-child(4) .ann{color:var(--mint)}
+.anl{font-size:.78rem;color:rgba(255,255,255,.52);margin-top:.38rem;display:block}
+.anlk{font-family:"Noto Sans Kannada",sans-serif;font-size:.68rem;color:rgba(255,255,255,.32);margin-top:.1rem;display:block}
+.pbar{margin-top:2.5rem;padding:.95rem 1.5rem;background:rgba(244,162,97,.1);border:1px solid rgba(244,162,97,.22);border-radius:8px;text-align:center;font-family:"DM Mono",monospace;font-size:.74rem;color:var(--amber);letter-spacing:.06em;position:relative;z-index:2}
+
+/* PROBLEM */
+#problem{background:var(--white)}
+.prob-inner{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2.5rem}
+.prob-text p{font-size:.96rem;color:var(--gray);line-height:1.82;margin-bottom:.9rem}
+.prob-text p strong{color:var(--ink);font-weight:700}
+.prob-text .pkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.86rem;color:var(--green);line-height:1.78;padding:.5rem .82rem;border-left:2px solid var(--mint);background:var(--pale);border-radius:0 6px 6px 0;margin-bottom:.9rem}
+.prob-stats{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.pstat{padding:1.5rem;border-radius:12px;text-align:center}
+.pstat:nth-child(1){background:linear-gradient(135deg,#1A5C36,#2D8653)}
+.pstat:nth-child(2){background:linear-gradient(135deg,#E76F51,#F4A261)}
+.pstat:nth-child(3){background:linear-gradient(135deg,#219EBC,#48CAE4)}
+.pstat:nth-child(4){background:linear-gradient(135deg,#B45309,#D97706)}
+.pstat .big{font-family:"Playfair Display",serif;font-size:2.55rem;font-weight:900;color:white;line-height:1}
+.pstat p{font-size:.8rem;color:rgba(255,255,255,.78);margin-top:.38rem;line-height:1.45}
+.pstat .pkn2{font-family:"Noto Sans Kannada",sans-serif;font-size:.7rem;color:rgba(255,255,255,.45);margin-top:.18rem}
+
+/* SEGMENTS */
+#segments{background:var(--bg)}
+.seg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.5rem}
+.seg-card{border-radius:14px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.seg-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.1)}
+.seg-top{padding:1.35rem 1.25rem .85rem}
+.seg-card:nth-child(1) .seg-top{background:linear-gradient(135deg,#1A5C36,#2D8653)}
+.seg-card:nth-child(2) .seg-top{background:linear-gradient(135deg,#6D28D9,#7C3AED)}
+.seg-card:nth-child(3) .seg-top{background:linear-gradient(135deg,#0E7490,#0284C7)}
+.seg-card:nth-child(4) .seg-top{background:linear-gradient(135deg,#B45309,#D97706)}
+.seg-card:nth-child(5) .seg-top{background:linear-gradient(135deg,#065F46,#059669)}
+.seg-card:nth-child(6) .seg-top{background:linear-gradient(135deg,#9D174D,#BE185D)}
+.seg-emoji{font-size:1.6rem;margin-bottom:.42rem}
+.seg-top h3{font-size:.96rem;font-weight:700;color:white;margin-bottom:.1rem}
+.seg-top .seg-sub{font-size:.75rem;color:rgba(255,255,255,.7)}
+.seg-top .skn{font-family:"Noto Sans Kannada",sans-serif;font-size:.73rem;color:rgba(255,255,255,.62)}
+.seg-body{background:white;padding:1rem 1.25rem;font-size:.84rem;color:var(--gray);line-height:1.65;border:1px solid rgba(0,0,0,.06);border-top:none;border-radius:0 0 14px 14px}
+.seg-body .bkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.77rem;color:var(--green);margin-top:.38rem;padding-top:.38rem;border-top:1px dashed var(--lgray)}
+
+/* ACCORDION */
+.acc-wrap{margin-top:2.5rem}
+.acc-item{border-radius:12px;overflow:hidden;border:1.5px solid var(--lgray);margin-bottom:.8rem;background:white;transition:border-color .22s}
+.acc-item.open{border-color:var(--leaf)}
+.acc-hdr{display:flex;align-items:center;justify-content:space-between;padding:1.05rem 1.3rem;cursor:pointer;transition:background .18s;gap:1rem}
+.acc-hdr:hover{background:var(--mist)}
+.acc-hdr-l{display:flex;align-items:center;gap:.75rem}
+.acc-em{font-size:1.25rem}
+.acc-ttl{font-size:.94rem;font-weight:700;color:var(--ink)}
+.acc-stl{font-size:.76rem;color:var(--grove);margin-top:.08rem}
+.acc-stlkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.72rem;color:var(--green);margin-top:.08rem}
+.acc-icon{width:26px;height:26px;border-radius:50%;background:var(--grove);color:white;display:flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700;flex-shrink:0;transition:transform .3s,background .22s}
+.acc-item.open .acc-icon{transform:rotate(45deg);background:var(--saffron)}
+.acc-body{display:none;padding:0 1.3rem 1.3rem}
+.acc-item.open .acc-body{display:block}
+.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:.6rem}
+.ex{background:var(--bg);border-radius:8px;padding:.9rem 1rem;border-left:3px solid var(--grove)}
+.ex:nth-child(even){border-left-color:var(--amber)}
+.ex strong{font-size:.87rem;color:var(--ink);display:block;margin-bottom:.2rem}
+.ex .ek{font-family:"Noto Sans Kannada",sans-serif;font-size:.72rem;color:var(--green);display:block;margin-bottom:.18rem}
+.ex p{font-size:.82rem;color:var(--gray);line-height:1.62}
+
+/* OFFERINGS */
+#offerings{background:var(--white)}
+.off-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.5rem}
+.off-card{border-radius:13px;overflow:hidden;border:1px solid var(--lgray);transition:box-shadow .22s,transform .22s;display:grid;grid-template-columns:68px 1fr}
+.off-card:hover{box-shadow:0 10px 32px rgba(26,92,54,.1);transform:translateY(-3px)}
+.off-n{display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:1.9rem;font-weight:900;color:white}
+.off-card:nth-child(1) .off-n{background:linear-gradient(180deg,#1A5C36,#2D8653)}
+.off-card:nth-child(2) .off-n{background:linear-gradient(180deg,#E76F51,#F4A261)}
+.off-card:nth-child(3) .off-n{background:linear-gradient(180deg,#219EBC,#48CAE4)}
+.off-card:nth-child(4) .off-n{background:linear-gradient(180deg,#B45309,#F4A261)}
+.off-body{padding:1.12rem 1.22rem}
+.off-tag{font-size:.65rem;color:var(--saffron);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem}
+.off-body h3{font-size:.94rem;font-weight:700;color:var(--ink);margin-bottom:.18rem}
+.off-kn{font-family:"Noto Sans Kannada",sans-serif;font-size:.73rem;color:var(--green);margin-bottom:.3rem}
+.off-body p{font-size:.84rem;color:var(--gray);line-height:1.65}
+
+/* HOW */
+#how{background:var(--bg)}
+.hsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:3rem;position:relative}
+.hsteps::before{content:"";position:absolute;top:2.1rem;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--grove),var(--amber),var(--saffron));z-index:0}
+.hs{text-align:center;padding:.5rem 1rem;position:relative;z-index:1}
+.sball{width:4.2rem;height:4.2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:1.45rem;font-weight:900;color:white;margin:0 auto 1rem;border:3px solid white;box-shadow:0 0 0 4px rgba(26,92,54,.12)}
+.hs:nth-child(1) .sball,.hs:nth-child(3) .sball{background:linear-gradient(135deg,var(--forest),var(--grove))}
+.hs:nth-child(2) .sball,.hs:nth-child(4) .sball{background:linear-gradient(135deg,var(--saffron),var(--amber))}
+.hs h3{font-size:.91rem;font-weight:700;color:var(--ink);margin-bottom:.38rem}
+.hs .hkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.73rem;color:var(--green);margin-bottom:.35rem}
+.hs p{font-size:.82rem;color:var(--gray);line-height:1.62}
+
+/* TIMELINE */
+#timeline{background:var(--forest);overflow:hidden;position:relative}
+#timeline::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(82,183,136,.05) 1px,transparent 1px);background-size:28px 28px}
+#timeline .h2{color:white}
+#timeline .h2kn{color:var(--mint)!important}
+#timeline .sub{color:rgba(255,255,255,.55)}
+#timeline .lbl{color:var(--amber)}
+.tl{margin-top:2.8rem;position:relative;padding-bottom:.5rem}
+.tl-line{position:absolute;left:110px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--leaf),var(--amber));z-index:0}
+.tl-row{display:grid;grid-template-columns:96px 22px 1fr;align-items:start;gap:0 .88rem;margin-bottom:1.45rem;position:relative;z-index:1}
+.tl-d{text-align:right;padding-top:3px;font-family:"DM Mono",monospace;font-size:.63rem;color:rgba(255,255,255,.42);text-transform:uppercase;letter-spacing:.04em}
+.tl-dot{width:13px;height:13px;border-radius:50%;margin-top:4px;position:relative;z-index:2;border:2px solid var(--forest)}
+.tl-row:nth-child(odd) .tl-dot{background:var(--leaf);outline:2px solid var(--leaf)}
+.tl-row:nth-child(even) .tl-dot{background:var(--amber);outline:2px solid var(--amber)}
+.tl-c h3{font-size:.91rem;font-weight:700;color:white;margin-bottom:.14rem}
+.tl-c .tkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.73rem;color:var(--mint);display:block;margin-bottom:.14rem}
+.tl-c p{font-size:.83rem;color:rgba(255,255,255,.52);line-height:1.62}
+.tl-row.key .tl-c h3{color:var(--amber)}
+
+/* WHO */
+#who{background:var(--cream)}
+.who-banner{background:linear-gradient(135deg,var(--forest),var(--grove));border-radius:14px;padding:1.75rem 2.1rem;margin-bottom:1.9rem;position:relative;overflow:hidden}
+.who-banner::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);background-size:20px 20px}
+.who-banner h3{font-family:"Playfair Display",serif;font-size:1.38rem;font-weight:900;color:white;margin-bottom:.17rem}
+.who-banner .wkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.93rem;color:var(--mint);font-weight:600;margin-bottom:.52rem;display:block}
+.who-banner p{font-size:.9rem;color:rgba(255,255,255,.65)}
+.who-list{display:grid;grid-template-columns:repeat(3,1fr);gap:.88rem}
+.wh{background:white;border-radius:11px;padding:1.12rem;display:flex;align-items:flex-start;gap:.68rem;border:1.5px solid var(--lgray);transition:transform .2s,box-shadow .2s}
+.wh:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(26,92,54,.1)}
+.wh-dot{width:25px;height:25px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--grove));color:white;display:flex;align-items:center;justify-content:center;font-size:.74rem;flex-shrink:0;margin-top:.1rem}
+.wh h4{font-size:.87rem;font-weight:700;color:var(--ink);margin-bottom:.12rem}
+.wh .wkn2{font-family:"Noto Sans Kannada",sans-serif;font-size:.71rem;color:var(--green);display:block;margin-bottom:.17rem}
+.wh p{font-size:.8rem;color:var(--gray);line-height:1.52}
+
+/* LEGACY */
+#legacy{background:var(--white)}
+.leg-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:2.5rem}
+.leg-card{padding:1.45rem;border-radius:13px;display:flex;gap:1rem;transition:transform .22s,box-shadow .22s}
+.leg-card:hover{transform:translateY(-3px);box-shadow:0 8px 26px rgba(0,0,0,.08)}
+.leg-card:nth-child(1){background:var(--mist);border:1.5px solid var(--mint)}
+.leg-card:nth-child(2){background:var(--straw);border:1.5px solid #FFE08A}
+.leg-card:nth-child(3){background:#EFF9FF;border:1.5px solid var(--skylt)}
+.leg-card:nth-child(4){background:#FFF0F6;border:1.5px solid #F9C6D9}
+.leg-ico{width:44px;height:44px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.35rem;flex-shrink:0}
+.leg-card:nth-child(1) .leg-ico{background:linear-gradient(135deg,#1A5C36,#2D8653)}
+.leg-card:nth-child(2) .leg-ico{background:linear-gradient(135deg,#B45309,#F4A261)}
+.leg-card:nth-child(3) .leg-ico{background:linear-gradient(135deg,#0E7490,#48CAE4)}
+.leg-card:nth-child(4) .leg-ico{background:linear-gradient(135deg,#9D174D,#E879A9)}
+.leg-card h3{font-size:.93rem;font-weight:700;color:var(--ink);margin-bottom:.12rem}
+.lckn{font-family:"Noto Sans Kannada",sans-serif;font-size:.73rem;color:var(--green);display:block;margin-bottom:.26rem}
+.leg-card p{font-size:.83rem;color:var(--gray);line-height:1.65}
+
+/* FAQ */
+#faq{background:var(--bg)}
+.faq-wrap{margin-top:2.5rem;max-width:780px;margin-left:auto;margin-right:auto}
+.fq{border-bottom:1.5px solid var(--lgray);overflow:hidden}
+.fq:last-child{border:none}
+.fq-q{display:flex;align-items:center;justify-content:space-between;padding:1.08rem 0;cursor:pointer;gap:1rem}
+.fq-qt{flex:1}
+.fq-en{font-size:.93rem;font-weight:700;color:var(--ink)}
+.fq-kn{font-family:"Noto Sans Kannada",sans-serif;font-size:.78rem;color:var(--green);display:block;margin-top:.1rem;font-weight:500}
+.fq-ico{width:25px;height:25px;border-radius:50%;background:var(--grove);color:white;display:flex;align-items:center;justify-content:center;font-size:.93rem;font-weight:700;flex-shrink:0;transition:transform .3s,background .22s}
+.fq.open .fq-ico{transform:rotate(45deg);background:var(--saffron)}
+.fq-a{font-size:.9rem;color:var(--gray);line-height:1.78;max-height:0;overflow:hidden;transition:max-height .4s var(--ease),padding .3s}
+.fq.open .fq-a{max-height:280px;padding-bottom:1.15rem}
+.fq-akn{font-family:"Noto Sans Kannada",sans-serif;font-size:.82rem;color:var(--green);display:block;margin-top:.42rem;padding:.48rem .68rem;background:var(--pale);border-radius:6px;line-height:1.7}
+
+/* APPLY */
+#apply{background:var(--forest);overflow:hidden;position:relative}
+.ao1{position:absolute;width:340px;height:340px;border-radius:50%;filter:blur(80px);top:-55px;left:-45px;background:rgba(64,145,108,.32);pointer-events:none}
+.ao2{position:absolute;width:290px;height:290px;border-radius:50%;filter:blur(80px);bottom:-45px;right:-28px;background:rgba(231,111,81,.13);pointer-events:none}
+.appin{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:2}
+#apply .h2{color:white}
+#apply .h2kn{color:var(--mint)!important}
+#apply .sub{color:rgba(255,255,255,.6)}
+#apply .lbl{color:var(--amber)}
+.ablist{margin-top:1.65rem}
+.abi{display:flex;align-items:flex-start;gap:.62rem;margin-bottom:.82rem}
+.abidot{width:19px;height:19px;border-radius:50%;background:rgba(244,162,97,.18);border:1.5px solid var(--amber);color:var(--amber);display:flex;align-items:center;justify-content:center;font-size:.58rem;flex-shrink:0;margin-top:.14rem}
+.abi p{font-size:.87rem;color:rgba(255,255,255,.65);line-height:1.6}
+.abi .abkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.77rem;color:rgba(183,228,199,.65);margin-top:.14rem;display:block}
+.appbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:16px;padding:2.1rem;backdrop-filter:blur(14px)}
+.appbox h3{font-family:"Playfair Display",serif;font-size:1.42rem;font-weight:900;color:white;margin-bottom:.18rem}
+.appkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.92rem;color:var(--mint);font-weight:600;display:block;margin-bottom:.38rem}
+.appbox p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:1.65rem}
+.bigbtn{display:block;text-align:center;background:linear-gradient(135deg,var(--saffron),var(--amber));color:white;font-weight:800;font-size:.99rem;padding:1.02rem;border-radius:9px;margin-bottom:.82rem;transition:all .2s;box-shadow:0 6px 22px rgba(231,111,81,.36)}
+.bigbtn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(231,111,81,.5)}
+.bbkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.79rem;display:block;opacity:.82;margin-top:.2rem}
+.secbtn{display:flex;align-items:center;justify-content:center;gap:.5rem;border:1.5px solid rgba(255,255,255,.22);color:rgba(255,255,255,.75);padding:.8rem;border-radius:9px;font-size:.86rem;font-weight:600;transition:all .2s;margin-bottom:.55rem}
+.secbtn:hover{border-color:rgba(255,255,255,.5);color:white;background:rgba(255,255,255,.07)}
+.appnote{text-align:center;margin-top:.85rem;font-family:"DM Mono",monospace;font-size:.63rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.07em}
+
+/* PARTNERS */
+#partners{background:var(--white);padding:4.5rem 0}
+.pwrap{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;margin-top:2.5rem}
+.pc{border-radius:16px;overflow:hidden;transition:box-shadow .25s,transform .25s}
+.pc:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,0,0,.1)}
+.pctop{padding:1.55rem 1.75rem 1.15rem}
+.pc:nth-child(1) .pctop{background:linear-gradient(135deg,#1A5C36,#2D8653)}
+.pc:nth-child(2) .pctop{background:linear-gradient(135deg,#0E3460,#1A56A0)}
+.pcla{display:flex;align-items:center;gap:.88rem;margin-bottom:.88rem}
+.pcico{width:46px;height:46px;border-radius:9px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:1.45rem;flex-shrink:0}
+.pcname{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:900;color:white;line-height:1.25}
+.pcname span{display:block;font-family:"Noto Sans Kannada",sans-serif;font-size:.73rem;font-weight:600;color:rgba(255,255,255,.52);margin-top:.12rem}
+.pctag{display:inline-block;background:rgba(255,255,255,.14);color:rgba(255,255,255,.85);padding:.2rem .68rem;border-radius:100px;font-size:.66rem;font-family:"DM Mono",monospace;letter-spacing:.05em;margin-bottom:.48rem}
+.pcdesc{font-size:.87rem;color:rgba(255,255,255,.67);line-height:1.72}
+.pcdesc .kn{font-family:"Noto Sans Kannada",sans-serif;font-size:.79rem;color:rgba(255,255,255,.46);display:block;margin-top:.38rem}
+.pcbot{padding:1.15rem 1.75rem;background:white;border:1px solid var(--lgray);border-top:none;border-radius:0 0 16px 16px;display:flex;align-items:center;justify-content:space-between}
+.pc:nth-child(2) .pcbot{border-color:#BFD7FF}
+.pclink{display:inline-flex;align-items:center;gap:.48rem;font-size:.84rem;font-weight:700;color:var(--grove);transition:all .2s}
+.pc:nth-child(2) .pclink{color:#1A56A0}
+.pclink:hover{gap:.72rem}
+.pclink::after{content:"→"}
+.pcest{font-size:.77rem;color:var(--gray)}
+
+/* SOLUTIONS */
+#solutions{background:linear-gradient(160deg,#EFF9FF,#F0FFF4,var(--straw));padding:4.5rem 0}
+.sol-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:2.4rem;align-items:center;margin-top:2.5rem}
+.sol-main{background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(33,158,188,.12);border:2px solid var(--skylt);transition:transform .25s,box-shadow .25s}
+.sol-main:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(33,158,188,.2)}
+.sol-top{background:linear-gradient(135deg,#0E7490,#219EBC,#48CAE4);padding:1.75rem;text-align:center}
+.sol-top .pico{font-size:2.4rem;margin-bottom:.45rem}
+.sol-top h3{font-family:"Playfair Display",serif;font-size:1.38rem;font-weight:900;color:white}
+.sol-top .skn{font-family:"Noto Sans Kannada",sans-serif;font-size:.93rem;color:rgba(255,255,255,.75);margin-top:.18rem}
+.sol-body{padding:1.45rem 1.75rem}
+.sol-body p{font-size:.92rem;color:var(--gray);line-height:1.78;margin-bottom:.75rem}
+.sol-body .kn{font-family:"Noto Sans Kannada",sans-serif;font-size:.84rem;color:var(--green);line-height:1.75;padding:.52rem .82rem;background:var(--pale);border-radius:7px;margin-bottom:1.15rem}
+.sollnk{display:flex;align-items:center;justify-content:center;gap:.55rem;background:linear-gradient(135deg,#0E7490,#219EBC);color:white;padding:.92rem 1.4rem;border-radius:9px;font-weight:700;font-size:.93rem;transition:all .22s;box-shadow:0 4px 18px rgba(33,158,188,.3)}
+.sollnk:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(33,158,188,.45)}
+.sol-info{display:grid;grid-template-columns:1fr 1fr;gap:.82rem}
+.si{background:white;border-radius:10px;padding:1.08rem;border:1.5px solid var(--lgray)}
+.si:nth-child(2){border-color:var(--skylt)}
+.si:nth-child(3){border-color:#FFE08A}
+.si:nth-child(4){border-color:#F9C6D9}
+.si .sico{font-size:1.4rem;margin-bottom:.42rem}
+.si h4{font-size:.87rem;font-weight:700;color:var(--ink);margin-bottom:.1rem}
+.si p{font-size:.8rem;color:var(--gray);line-height:1.6}
+
+/* FOOTER */
+footer{background:#04140A;padding:4rem 0 2rem}
+.fmain{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.4rem;margin-bottom:2.4rem}
+.fb h3{font-family:"Playfair Display",serif;font-size:1.03rem;font-weight:900;color:white;margin-bottom:.18rem}
+.fb .fkn{font-family:"Noto Sans Kannada",sans-serif;font-size:.8rem;color:var(--mint);display:block;font-weight:600;margin-bottom:.52rem}
+.fb p{font-size:.8rem;color:rgba(255,255,255,.3);line-height:1.72}
+.fc h4{font-size:.64rem;color:var(--mint);font-weight:700;text-transform:uppercase;letter-spacing:.09em;margin-bottom:.88rem}
+.fl{display:flex;align-items:center;gap:.6rem;margin-bottom:.68rem;transition:color .2s}
+.fl:hover .fs{color:var(--amber)}
+.fi{width:32px;height:32px;border-radius:7px;background:rgba(82,183,136,.08);border:1px solid rgba(82,183,136,.15);display:flex;align-items:center;justify-content:center;font-size:.88rem;flex-shrink:0}
+.fs{font-size:.83rem;color:rgba(255,255,255,.55);transition:color .2s}
+.fp p{font-size:.82rem;color:rgba(255,255,255,.37);line-height:1.85}
+.fp strong{color:var(--mint)}
+.fp a{color:var(--mint);transition:color .2s}
+.fp a:hover{color:var(--amber)}
+.fdiv{border:none;border-top:1px solid rgba(255,255,255,.06);margin:0 0 1.4rem}
+.fbot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem}
+.fbot p{font-size:.74rem;color:rgba(255,255,255,.2)}
+.fbot a{color:var(--mint);transition:color .2s}
+.fbot a:hover{color:var(--amber)}
+.qband{background:linear-gradient(135deg,var(--saffron),var(--amber));padding:2.8rem 2rem;text-align:center;position:relative;overflow:hidden}
+.qband::before{content:"❝";position:absolute;font-size:15rem;color:rgba(255,255,255,.055);top:-3.5rem;left:1.5rem;font-family:serif;line-height:1;pointer-events:none}
+.qband blockquote{font-family:"Playfair Display",serif;font-size:clamp(1.04rem,2vw,1.38rem);font-weight:700;color:white;line-height:1.6;max-width:820px;margin:0 auto;position:relative;z-index:2}
+.qband .qkn{font-family:"Noto Sans Kannada",sans-serif;font-size:clamp(.84rem,1.6vw,1.06rem);color:rgba(255,255,255,.72);display:block;margin-top:.68rem;font-weight:500}
+
+@media(max-width:920px){
+  .hero{grid-template-columns:1fr}.hero-r{display:none}
+  .hero-l{padding:8rem 1.8rem 3.5rem}
+  .prob-inner,.sol-inner,.appin,.fmain,.pwrap,.ain{grid-template-columns:1fr}
+  .off-grid,.leg-grid{grid-template-columns:1fr}
+  .seg-grid,.who-list{grid-template-columns:1fr 1fr}
+  nav .nav-mid{display:none}.hbg{display:flex}
+  .ex-grid{grid-template-columns:1fr}
+  .hsteps{grid-template-columns:1fr 1fr;gap:2rem}.hsteps::before{display:none}
+}
+@media(max-width:580px){
+  .seg-grid,.who-list,.sol-info{grid-template-columns:1fr}
+  .prob-stats,.anums{grid-template-columns:1fr 1fr}
+  section{padding:4rem 0}
+}
+</style>
+</head>
+<body>
+<div id="pgbar"></div>
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSd3XB7xjXGr2Sjt28bHZgSgv0lwtdms6cr_1kHytWb_sBplHg/viewform?usp=publish-editor" target="_blank" class="fcta" id="fcta">
+  <span class="en-only">Apply Now ↗</span><span class="kn-only kn">ಅರ್ಜಿ ಸಲ್ಲಿಸಿ ↗</span>
+</a>
+
+<!-- NAV -->
+<nav>
+  <a href="#top" class="nav-brand">
+    <span class="nav-dot"></span>
+    <div class="nb"><span class="nb-en">Climate Smart Accelerator</span><span class="nb-kn kn">ಹವಾಮಾನ ಸ್ಮಾರ್ಟ್ ಆಕ್ಸಿಲರೇಟರ್</span></div>
+  </a>
+  <div class="nav-mid">
+    <a href="#problem"><span class="en-only">Problem</span><span class="kn-only kn">ಸಮಸ್ಯೆ</span></a>
+    <a href="#segments"><span class="en-only">Segments</span><span class="kn-only kn">ವಿಭಾಗ</span></a>
+    <a href="#offerings"><span class="en-only">What You Get</span><span class="kn-only kn">ಏನು ಸಿಗುತ್ತದೆ</span></a>
+    <a href="#timeline"><span class="en-only">Timeline</span><span class="kn-only kn">ವೇಳಾಪಟ್ಟಿ</span></a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lbtn on" id="btn-en" onclick="setLang('en')">EN</button>
+      <button class="lbtn lbtn-kn kn" id="btn-kn" onclick="setLang('kn')">ಕನ್ನಡ</button>
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3XB7xjXGr2Sjt28bHZgSgv0lwtdms6cr_1kHytWb_sBplHg/viewform?usp=publish-editor" target="_blank" class="nav-app">
+      <span class="en-only">Apply Now →</span><span class="kn-only kn">ಅರ್ಜಿ ಸಲ್ಲಿಸಿ →</span>
+    </a>
+    <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob" id="mobnav">
+  <div class="mob-lsw">
+    <button class="on" id="mben" onclick="setLang('en')">English</button>
+    <button class="kn" id="mbkn" onclick="setLang('kn')">ಕನ್ನಡ</button>
+  </div>
+  <a href="#problem" onclick="cl()"><span class="en-only">Problem</span><span class="kn-only kn">ಸಮಸ್ಯೆ</span></a>
+  <a href="#segments" onclick="cl()"><span class="en-only">Segments</span><span class="kn-only kn">ಆರು ವಿಭಾಗ</span></a>
+  <a href="#offerings" onclick="cl()"><span class="en-only">What You Get</span><span class="kn-only kn">ಏನು ಸಿಗುತ್ತದೆ</span></a>
+  <a href="#timeline" onclick="cl()"><span class="en-only">Timeline</span><span class="kn-only kn">ವೇಳಾಪಟ್ಟಿ</span></a>
+  <a href="#who" onclick="cl()"><span class="en-only">Who Can Apply</span><span class="kn-only kn">ಯಾರು ಅರ್ಜಿ ಸಲ್ಲಿಸಬಹುದು</span></a>
+  <a href="#faq" onclick="cl()">FAQ</a>
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3XB7xjXGr2Sjt28bHZgSgv0lwtdms6cr_1kHytWb_sBplHg/viewform?usp=publish-editor" target="_blank" class="mapp">→ <span class="en-only">Apply Now</span><span class="kn-only kn">ಅರ್ಜಿ ಸಲ್ಲಿಸಿ</span></a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-mesh"></div>
+  <div class="ho o1"></div><div class="ho o2"></div>
+  <div class="hero-l">
+    <div class="hbadge">🌱 <span class="en-only">Cohort 01 · Karnataka · 2026</span><span class="kn-only kn">ಕೊಹಾರ್ಟ್ 01 · ಕರ್ನಾಟಕ · 2026</span></div>
+    <h1 class="hero-h1 en-only">Climate <em>Smart</em><br>Accelerator<br><span style="font-size:.64em;color:rgba(255,255,255,.65);font-family:'DM Sans',sans-serif;font-weight:500;line-height:1.4">through Farmers<br>via Collectives</span></h1>
+    <h1 class="hero-h1 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ಹವಾಮಾನ <em>ಸ್ಮಾರ್ಟ್</em><br>ಆಕ್ಸಿಲರೇಟರ್<br><span style="font-size:.64em;color:rgba(255,255,255,.65);font-weight:500;line-height:1.4">ಸಾಮೂಹಿಕ ಕೃಷಿ ಮೂಲಕ</span></h1>
+    <p class="hero-sub en-only">A 6-month programme empowering Karnataka farming collectives to earn more, build enterprise, and become climate-resilient — together.</p>
+    <p class="hero-sub-kn kn-only kn">6 ತಿಂಗಳ ಕಾರ್ಯಕ್ರಮ — ರೈತ ಸಾಮೂಹಿಕ ಸಂಸ್ಥೆಗಳಿಗೆ ಹೆಚ್ಚಿನ ಆದಾಯ, ಉದ್ಯಮ ಮತ್ತು ಹವಾಮಾನ ನಿರೋಧಕ ಕೃಷಿ.</p>
+    <div class="hbtns">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3XB7xjXGr2Sjt28bHZgSgv0lwtdms6cr_1kHytWb_sBplHg/viewform?usp=publish-editor" target="_blank" class="bprimary"><span class="en-only">Apply Now →</span><span class="kn-only kn">ಅರ್ಜಿ ಸಲ್ಲಿಸಿ →</span></a>
+      <a href="#problem" class="bghost"><span class="en-only">Learn More ↓</span><span class="kn-only kn">ಇನ್ನಷ್ಟು ↓</span></a>
+    </div>
+    <div class="hnums">
+      <div class="hn"><div class="n" data-count="20">0</div><div class="le en-only">Farmer Groups</div><div class="le kn-only kn">ರೈತ ಗುಂಪುಗಳು</div></div>
+      <div class="hn"><div class="n" data-count="6">0</div><div class="le en-only">Months</div><div class="le kn-only kn">ತಿಂಗಳು</div></div>
+      <div class="hn"><div class="n" data-count="4">0</div><div class="le en-only">Support Areas</div><div class="le kn-only kn">ಬೆಂಬಲ ಕ್ಷೇತ್ರ</div></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="hrdots"></div>
+    <div class="hcard">
+      <div class="hctop"><span class="en-only">Programme Focus</span><span class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಕಾರ್ಯಕ್ರಮ ಗಮನ</span></div>
+      <div class="pills">
+        <span class="pill pg">🌾 <span class="en-only">Common Goods</span><span class="kn-only kn">ಸಾಮಾನ್ಯ ಪ್ರಯೋಜನ</span></span>
+        <span class="pill po">🤲 <span class="en-only">Vulnerable Members</span><span class="kn-only kn">ದುರ್ಬಲ ಸದಸ್ಯರು</span></span>
+        <span class="pill ps">👩 <span class="en-only">Women</span><span class="kn-only kn">ಮಹಿಳೆಯರು</span></span>
+        <span class="pill pg">⚡ <span class="en-only">Youth</span><span class="kn-only kn">ಯುವಕರು</span></span>
+        <span class="pill po">🌿 <span class="en-only">Agri Labourers</span><span class="kn-only kn">ಕೃಷಿ ಕಾರ್ಮಿಕರು</span></span>
+        <span class="pill ps">🏆 <span class="en-only">Champions</span><span class="kn-only kn">ಚಾಂಪಿಯನ್ಸ್</span></span>
+      </div>
+      <div class="dlbox">
+        <div><div class="dln">Jun 30</div><div class="dly">2026</div></div>
+        <div>
+          <div class="dle en-only">Application Deadline</div>
+          <div class="dle kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಅರ್ಜಿ ಕೊನೆ ದಿನ</div>
+          <div class="dlk en-only">Programme starts August 2026</div>
+          <div class="dlk kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಕಾರ್ಯಕ್ರಮ ಆಗಸ್ಟ್ 2026 ಆರಂಭ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<div class="astrip rv">
+  <div class="wrap">
+    <div class="ain">
+      <div class="atxt">
+        <h3><span class="en-only">COE FPO × SELCO Foundation</span><span class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">COE FPO × ಸೆಲ್ಕೋ ಫೌಂಡೇಶನ್</span></h3>
+        <span class="akn kn en-only">COE FPO × ಸೆಲ್ಕೋ ಫೌಂಡೇಶನ್</span>
+        <p class="en-only">Anchored by <strong>SELCO Foundation</strong> and the <strong>Centre of Excellence for Farmer Producer Organisations (COE FPO)</strong> — bringing climate technology, enterprise expertise, and deep farmer networks to farming collectives across Karnataka.</p>
+        <p class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-size:.9rem;color:rgba(255,255,255,.62);line-height:1.8">ಸೆಲ್ಕೋ ಫೌಂಡೇಶನ್ ಮತ್ತು COE FPO ಮೂಲಕ — ಹವಾಮಾನ ತಂತ್ರಜ್ಞಾನ, ವ್ಯಾಪಾರ ತಜ್ಞತೆ ಮತ್ತು ರೈತ ಜಾಲ ಒಟ್ಟುಗೂಡಿಸಿ ಕರ್ನಾಟಕ ರೈತ ಸಾಮೂಹಿಕ ಸಂಸ್ಥೆಗಳಿಗೆ ಬೆಂಬಲ.</p>
+      </div>
+      <div class="anums">
+        <div class="an"><span class="ann">20</span><span class="anl en-only">FPOs Selected</span><span class="anl kn-only kn">FPO ಆಯ್ಕೆ</span></div>
+        <div class="an"><span class="ann">6</span><span class="anl en-only">Months</span><span class="anl kn-only kn">ತಿಂಗಳು</span></div>
+        <div class="an"><span class="ann">₹0</span><span class="anl en-only">Cost to Apply</span><span class="anl kn-only kn">ಅರ್ಜಿ ಉಚಿತ</span></div>
+        <div class="an"><span class="ann">4</span><span class="anl en-only">Key Services</span><span class="anl kn-only kn">ಮುಖ್ಯ ಸೇವೆಗಳು</span></div>
+      </div>
+    </div>
+    <div class="pbar rv d2">
+      <span class="en-only">A PROGRAMME OF: COE FPO (Centre of Excellence for Farmer Producer Organisations) &nbsp;·&nbsp; SELCO FOUNDATION</span>
+      <span class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಕಾರ್ಯಕ್ರಮ: COE FPO (ಕೇಂದ್ರ ಉತ್ಕೃಷ್ಟತಾ ಸಂಸ್ಥೆ) · ಸೆಲ್ಕೋ ಫೌಂಡೇಶನ್</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl en-only">The Challenge</span>
+      <span class="lbl kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಸವಾಲು</span>
+      <h2 class="h2 en-only">Strong farmers.<br>Weak markets.</h2>
+      <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ಪ್ರಬಲ ರೈತರು.<br>ದುರ್ಬಲ ಮಾರುಕಟ್ಟೆ.</h2>
+      <h2 class="h2kn kn en-only">ಪ್ರಬಲ ರೈತರು. ದುರ್ಬಲ ಮಾರುಕಟ್ಟೆ.</h2>
+    </div>
+    <div class="prob-inner rv d1">
+      <div class="prob-text">
+        <p class="en-only">FPOs across Karnataka have skilled farmers and good produce — but most are selling raw material at rock-bottom prices while the real value is captured by traders and intermediaries downstream.</p>
+        <div class="pkn kn-only kn">ಕರ್ನಾಟಕದ FPO ಗಳಲ್ಲಿ ನಿಪುಣ ರೈತರು ಮತ್ತು ಉತ್ತಮ ಉತ್ಪನ್ನ ಇದೆ — ಆದರೆ ಹೆಚ್ಚಿನವರು ಕಚ್ಚಾ ಸಾಮಗ್ರಿಯನ್ನು ಕಡಿಮೆ ಬೆಲೆಗೆ ಮಾರುತ್ತಿದ್ದಾರೆ.</div>
+        <p class="en-only">The missing piece is not land or labour. It is <strong>design thinking, market access, and enterprise support</strong> — the things this accelerator directly provides.</p>
+        <div class="pkn kn-only kn">ಕೊರತೆ ಇರುವುದು ಜಮೀನಿನಲ್ಲಲ್ಲ ಅಥವಾ ಶ್ರಮದಲ್ಲಲ್ಲ. ಇರುವುದು <strong>ವಿನ್ಯಾಸ ಚಿಂತನೆ, ಮಾರುಕಟ್ಟೆ ಪ್ರವೇಶ ಮತ್ತು ಉದ್ಯಮ ಬೆಂಬಲ</strong>.</div>
+        <p class="en-only">At the same time, many FPO members — <strong>women, youth, small farmers, agri-labourers</strong> — are not getting the full benefit of being part of a collective. This programme puts them at the centre.</p>
+        <div class="pkn kn-only kn">ಅನೇಕ FPO ಸದಸ್ಯರು — <strong>ಮಹಿಳೆಯರು, ಯುವಕರು, ಸಣ್ಣ ರೈತರು, ಕೃಷಿ ಕಾರ್ಮಿಕರು</strong> — ಸಾಮೂಹಿಕ ಸಂಸ್ಥೆಯ ಪೂರ್ಣ ಪ್ರಯೋಜನ ಪಡೆಯುತ್ತಿಲ್ಲ. ಈ ಕಾರ್ಯಕ್ರಮ ಅವರನ್ನೇ ಕೇಂದ್ರ ಬಿಂದುವಾಗಿ ಇಡುತ್ತದೆ.</div>
+      </div>
+      <div class="prob-stats rv d2">
+        <div class="pstat"><div class="big">84%</div><p class="en-only">of Karnataka FPOs have no designed brand or packaging</p><p class="kn-only kn">ಕರ್ನಾಟಕ FPO ಗಳಿಗೆ ಬ್ರ್ಯಾಂಡ್ ಇಲ್ಲ</p></div>
+        <div class="pstat"><div class="big">3×</div><p class="en-only">income increase possible when FPOs access design and markets</p><p class="kn-only kn">ಡಿಸೈನ್ ಮತ್ತು ಮಾರುಕಟ್ಟೆ ಸಿಕ್ಕರೆ 3 ಪಟ್ಟು ಆದಾಯ</p></div>
+        <div class="pstat"><div class="big">30%</div><p class="en-only">of produce lost between farm and market due to no storage or grading</p><p class="kn-only kn">ಶೇಖರಣೆ ಇಲ್ಲದೆ 30% ಉತ್ಪನ್ನ ನಷ್ಟ</p></div>
+        <div class="pstat"><div class="big">20K+</div><p class="en-only">FPOs in India — most still selling at commodity prices</p><p class="kn-only kn">ಭಾರತದಲ್ಲಿ 20K+ FPO — ಹೆಚ್ಚಿನವರು ಇನ್ನೂ ಕಡಿಮೆ ಬೆಲೆಗೆ ಮಾರುತ್ತಿದ್ದಾರೆ</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<div class="qband rv">
+  <blockquote>
+    <span class="en-only">"One good enterprise design reaching one FPO can change the income of thousands of farmer families — with no intermediary."</span>
+    <span class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">"ಒಂದು ಉತ್ತಮ ವ್ಯಾಪಾರ ವಿನ್ಯಾಸ ಒಂದು FPO ತಲುಪಿದರೆ ಸಾವಿರಾರು ರೈತ ಕುಟುಂಬಗಳ ಆದಾಯ ಬದಲಾಗಬಹುದು."</span>
+    <span class="qkn en-only">— Climate Smart Accelerator, COE FPO × SELCO Foundation</span>
+  </blockquote>
+</div>
+
+<!-- SEGMENTS -->
+<section id="segments">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl en-only">Six Member Segments</span>
+      <span class="lbl kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಆರು ಸದಸ್ಯ ವಿಭಾಗ</span>
+      <h2 class="h2 en-only">Every member counts.</h2>
+      <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ಪ್ರತಿ ಸದಸ್ಯನೂ ಮುಖ್ಯ.</h2>
+      <p class="sub en-only">The programme asks FPOs to bring ideas for all six groups — from every farmer in the collective to the most overlooked ones.</p>
+      <p class="sub kn-only kn">ಕಾರ್ಯಕ್ರಮ ಎಲ್ಲ ಆರು ಗುಂಪಿಗೂ ಯೋಜನೆ ತರಲು ಕೇಳುತ್ತದೆ — ಅತ್ಯಂತ ಕಡೆಗಣಿಸಲ್ಪಟ್ಟವರಿಗೂ.</p>
+    </div>
+    <div class="seg-grid rv d1">
+      <div class="seg-card">
+        <div class="seg-top"><div class="seg-emoji">🌾</div><h3 class="en-only">Common Goods</h3><h3 class="kn-only kn">ಸಾಮಾನ್ಯ ಸರಕುಗಳು</h3><div class="seg-sub en-only">Benefits all members get</div><div class="skn kn-only kn">ಎಲ್ಲ ಸದಸ್ಯರಿಗೂ</div></div>
+        <div class="seg-body"><span class="en-only">What can your FPO do beyond buying produce and supplying inputs — so that every single member benefits more?</span><span class="kn-only kn">ನಿಮ್ಮ FPO ಪ್ರತಿ ಸದಸ್ಯನಿಗೂ ಹೆಚ್ಚಿನ ಪ್ರಯೋಜನ ನೀಡಲು ಏನು ಮಾಡಬಹುದು?</span></div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-top"><div class="seg-emoji">🤲</div><h3 class="en-only">Vulnerable Members</h3><h3 class="kn-only kn">ದುರ್ಬಲ ಸದಸ್ಯರು</h3><div class="seg-sub en-only">Half-acre to thriving farm</div><div class="skn kn-only kn">ಅರ್ಧ ಎಕರೆ ರೈತ</div></div>
+        <div class="seg-body"><span class="en-only">The smallest farmers in your FPO — half-acre holders earning ₹12,000–18,000/year. What would transform their income?</span><span class="kn-only kn">ಅತ್ಯಂತ ಸಣ್ಣ ರೈತರು — ₹12,000–18,000/ವರ್ಷ ಸಂಪಾದಿಸುತ್ತಾರೆ. ಅವರ ಆದಾಯ ಬದಲಾಯಿಸಲು ಏನು ಮಾಡಬಹುದು?</span></div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-top"><div class="seg-emoji">👩</div><h3 class="en-only">Women</h3><h3 class="kn-only kn">ಮಹಿಳೆಯರು</h3><div class="seg-sub en-only">From SHG member to FPO director</div><div class="skn kn-only kn">SHG ಸದಸ್ಯೆಯಿಂದ FPO ನಿರ್ದೇಶಕಿ</div></div>
+        <div class="seg-body"><span class="en-only">Women do most of the farm work but get the least benefit. This changes — with roles, income, and leadership pathways designed for women.</span><span class="kn-only kn">ಮಹಿಳೆಯರು ಹೆಚ್ಚಿನ ಕೃಷಿ ಕೆಲಸ ಮಾಡುತ್ತಾರೆ ಆದರೆ ಕಡಿಮೆ ಪ್ರಯೋಜನ ಪಡೆಯುತ್ತಾರೆ. ಇದು ಬದಲಾಗುತ್ತದೆ.</span></div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-top"><div class="seg-emoji">⚡</div><h3 class="en-only">Youth</h3><h3 class="kn-only kn">ಯುವಕರು</h3><div class="seg-sub en-only">Young members as enterprise builders</div><div class="skn kn-only kn">ಉದ್ಯಮ ನಿರ್ಮಾಣ</div></div>
+        <div class="seg-body"><span class="en-only">Young members leaving agriculture for cities. This programme gives them real roles, income, and a reason to stay — and lead.</span><span class="kn-only kn">ಯುವಕರು ನಗರಕ್ಕೆ ಹೋಗುತ್ತಿದ್ದಾರೆ. ಈ ಕಾರ್ಯಕ್ರಮ ಅವರಿಗೆ ನಿಜವಾದ ಪಾತ್ರ ಮತ್ತು ಆದಾಯ ನೀಡುತ್ತದೆ.</span></div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-top"><div class="seg-emoji">🌿</div><h3 class="en-only">Agri Labourers</h3><h3 class="kn-only kn">ಕೃಷಿ ಕಾರ್ಮಿಕರು</h3><div class="seg-sub en-only">Landless workers as stakeholders</div><div class="skn kn-only kn">ಭೂರಹಿತ ಕಾರ್ಮಿಕರು</div></div>
+        <div class="seg-body"><span class="en-only">The most overlooked group in every FPO — landless workers who depend on farms. Skill, dignity, and a stake in the collective.</span><span class="kn-only kn">ಭೂರಹಿತ ಕಾರ್ಮಿಕರಿಗೆ ಕೌಶಲ್ಯ, ಗೌರವ ಮತ್ತು ಸಾಮೂಹಿಕ ಸಂಸ್ಥೆಯಲ್ಲಿ ಪಾಲು.</span></div>
+      </div>
+      <div class="seg-card">
+        <div class="seg-top"><div class="seg-emoji">🏆</div><h3 class="en-only">Champions</h3><h3 class="kn-only kn">ಚಾಂಪಿಯನ್ಸ್</h3><div class="seg-sub en-only">One champion changes 50 lives</div><div class="skn kn-only kn">ಒಬ್ಬ ಚಾಂಪಿಯನ್ 50 ರೈತರಿಗೆ</div></div>
+        <div class="seg-body"><span class="en-only">Natural leaders in every cluster. Trained, paid, and empowered to be the connectors between the FPO and every member around them.</span><span class="kn-only kn">ಪ್ರತಿ ಗ್ರಾಮದ ನೈಸರ್ಗಿಕ ನಾಯಕರು — ತರಬೇತಿ, ಸಂಭಾವನೆ ಮತ್ತು FPO ಸದಸ್ಯರ ನಡುವೆ ಸಂಪರ್ಕ.</span></div>
+      </div>
+    </div>
+
+    <!-- Full Accordion — all 6 segments in detail -->
+    <div class="acc-wrap rv d2">
+
+      <div class="acc-item open">
+        <div class="acc-hdr" onclick="tog(this)">
+          <div class="acc-hdr-l"><span class="acc-em">🌾</span><div><div class="acc-ttl en-only">Common Goods — Examples</div><div class="acc-ttl kn-only kn">ಸಾಮಾನ್ಯ ಸರಕು — ಉದಾಹರಣೆಗಳು</div><div class="acc-stl en-only">Things your FPO can do for every member</div><div class="acc-stlkn kn-only kn">ನಿಮ್ಮ FPO ಪ್ರತಿ ಸದಸ್ಯನಿಗೆ ಮಾಡಬಹುದಾದ ಕೆಲಸ</div></div></div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body"><div class="ex-grid">
+          <div class="ex"><strong>🛡 Group Crop Insurance</strong><span class="ek kn">ಗುಂಪು ಬೆಳೆ ವಿಮೆ</span><p>Enrol all members in PM Fasal Bima Yojana as a group — negotiate lower premiums, handle paperwork, and ensure claims reach farmers quickly.</p></div>
+          <div class="ex"><strong>💰 Cheaper Credit for All</strong><span class="ek kn">ಅಗ್ಗದ ಸಾಲ</span><p>Get working capital loans through NABARD at 4–7% interest instead of 24%+ from moneylenders. Facilitate Kisan Credit Cards for every member.</p></div>
+          <div class="ex"><strong>🔬 Soil Testing &amp; Advice</strong><span class="ek kn">ಮಣ್ಣು ಪರೀಕ್ಷೆ</span><p>Bulk soil testing and personalised crop advice for every farm — not just the large landholders. Better inputs = better yield.</p></div>
+          <div class="ex"><strong>🚜 Shared Machinery</strong><span class="ek kn">ಯಂತ್ರ ಹಂಚಿಕೆ</span><p>A common pool of tractors, sprayers, and harvesters — reducing per-acre costs by 20–30% for every member who uses it.</p></div>
+          <div class="ex"><strong>🏭 Common Storage</strong><span class="ek kn">ಸಾಮಾನ್ಯ ಶೇಖರಣೆ</span><p>A shared warehouse so members don't have to sell immediately after harvest at the lowest price. Store, wait, sell better.</p></div>
+          <div class="ex"><strong>📲 Better Market Prices</strong><span class="ek kn">ಉತ್ತಮ ಮಾರುಕಟ್ಟೆ ಬೆಲೆ</span><p>Connect members to digital markets — real-time mandi prices, direct buyer access, and eliminating middlemen who capture the value.</p></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-hdr" onclick="tog(this)">
+          <div class="acc-hdr-l"><span class="acc-em">🤲</span><div><div class="acc-ttl en-only">Vulnerable Members — Examples</div><div class="acc-ttl kn-only kn">ದುರ್ಬಲ ಸದಸ್ಯರು — ಉದಾಹರಣೆಗಳು</div><div class="acc-stl en-only">Turning ₹15,000/year into ₹50,000+/year</div><div class="acc-stlkn kn-only kn">₹15,000 ಆದಾಯ ₹50,000+ ಗೆ ಬದಲಾಯಿಸಿ</div></div></div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body"><div class="ex-grid">
+          <div class="ex"><strong>🥬 Kitchen Garden Kits</strong><span class="ek kn">ಮನೆ ತೋಟ ಕಿಟ್</span><p>A 500 sq ft vegetable garden on homestead land can earn ₹8,000–12,000 extra per year — plus food for the family. FPO supplies seeds and training.</p></div>
+          <div class="ex"><strong>🐐 Goat / Poultry</strong><span class="ek kn">ಮೇಕೆ / ಕೋಳಿ</span><p>Low-cost livestock that earns income without needing more land. FPO handles group insurance, vaccination, and finding buyers for the produce.</p></div>
+          <div class="ex"><strong>🏗 MGNREGA for Farm Work</strong><span class="ek kn">ಮನರೇಗಾ ಬಳಕೆ</span><p>Use government MGNREGA job cards to build bunds, ponds, and level land — reducing costs and improving productivity on small farms.</p></div>
+          <div class="ex"><strong>🔗 Women's SHG Linkage</strong><span class="ek kn">ಮಹಿಳಾ SHG ಸಂಪರ್ಕ</span><p>Link savings groups to FPO work — packaging, processing, micro-enterprises — so women in small-holder households earn without needing land.</p></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-hdr" onclick="tog(this)">
+          <div class="acc-hdr-l"><span class="acc-em">👩</span><div><div class="acc-ttl en-only">Women — Examples</div><div class="acc-ttl kn-only kn">ಮಹಿಳೆಯರು — ಉದಾಹರಣೆಗಳು</div><div class="acc-stl en-only">From SHG member to FPO director</div><div class="acc-stlkn kn-only kn">SHG ಸದಸ್ಯೆಯಿಂದ FPO ನಿರ್ದೇಶಕಿ</div></div></div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body"><div class="ex-grid">
+          <div class="ex"><strong>📦 Women-run Packing Units</strong><span class="ek kn">ಮಹಿಳಾ ಪ್ಯಾಕಿಂಗ್ ಘಟಕ</span><p>Contract women's SHGs to do sorting, grading, and packing for the FPO — piece-rate income directly tied to the FPO's value addition.</p></div>
+          <div class="ex"><strong>🗳 33% Women on Board</strong><span class="ek kn">33% ಮಹಿಳಾ ನಾಯಕತ್ವ</span><p>Set a target: at least 1 in 3 board positions held by women. Provide governance training and mentorship to build their confidence.</p></div>
+          <div class="ex"><strong>🌸 Women's Own Crops</strong><span class="ek kn">ಮಹಿಳಾ ಬೆಳೆ</span><p>Floriculture, spices, specialty vegetables — crops women can grow on homestead land and own the income from, independently.</p></div>
+          <div class="ex"><strong>📈 SHG → FPO Director Path</strong><span class="ek kn">SHG ನಿಂದ FPO ನಿರ್ದೇಶಕ ಹಾದಿ</span><p>A clear 6-month pathway for women SHG leaders to become FPO directors — with training, visits to other FPOs, and mentorship.</p></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-hdr" onclick="tog(this)">
+          <div class="acc-hdr-l"><span class="acc-em">⚡</span><div><div class="acc-ttl en-only">Youth — Examples</div><div class="acc-ttl kn-only kn">ಯುವಕರು — ಉದಾಹರಣೆಗಳು</div><div class="acc-stl en-only">Young members as enterprise builders</div><div class="acc-stlkn kn-only kn">ಉದ್ಯಮ ನಿರ್ಮಾಪಕರಾಗಿ</div></div></div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body"><div class="ex-grid">
+          <div class="ex"><strong>🏪 Village Input Shops</strong><span class="ek kn">ಗ್ರಾಮ ಒಳಹರಿವು ಅಂಗಡಿ</span><p>FPO licenses young members to run input shops at village level — they earn commission, members get quality seeds and fertilizer nearby.</p></div>
+          <div class="ex"><strong>🚜 Machine Operators</strong><span class="ek kn">ಯಂತ್ರ ಚಾಲಕರು</span><p>Youth trained to operate tractors, drones, and sprayers for hire — daily earnings while reducing FPO costs for equipment.</p></div>
+          <div class="ex"><strong>💻 FPO Digital Manager</strong><span class="ek kn">FPO ಡಿಜಿಟಲ್ ಮ್ಯಾನೇಜರ್</span><p>Young members manage the FPO's online presence, digital payments, and price tracking — skills training provided by the programme.</p></div>
+          <div class="ex"><strong>🏭 Small Processing Units</strong><span class="ek kn">ಸಣ್ಣ ಸಂಸ್ಕರಣಾ ಘಟಕ</span><p>Youth-run pickle, flour, oil, or cold-press units — FPO supplies the raw material, helps with packaging and finding buyers.</p></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-hdr" onclick="tog(this)">
+          <div class="acc-hdr-l"><span class="acc-em">🌿</span><div><div class="acc-ttl en-only">Agri Labourers — Examples</div><div class="acc-ttl kn-only kn">ಕೃಷಿ ಕಾರ್ಮಿಕರು — ಉದಾಹರಣೆಗಳು</div><div class="acc-stl en-only">Landless workers as stakeholders</div><div class="acc-stlkn kn-only kn">ಭೂರಹಿತ ಕಾರ್ಮಿಕರಿಗೆ ಪಾಲು</div></div></div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body"><div class="ex-grid">
+          <div class="ex"><strong>🎓 Skill Certificates</strong><span class="ek kn">ಕೌಶಲ್ಯ ಪ್ರಮಾಣಪತ್ರ</span><p>Enrol labourers in government skill programs for grafting, pruning, and organic farming. A certificate means higher daily wages.</p></div>
+          <div class="ex"><strong>📲 On-Time Digital Pay</strong><span class="ek kn">ಸಮಯಕ್ಕೆ ಡಿಜಿಟಲ್ ವೇತನ</span><p>FPO ensures wages are paid on time via UPI — ending payment delays and the disputes that harm relationships between farmers and workers.</p></div>
+          <div class="ex"><strong>📅 Work Calendar</strong><span class="ek kn">ಕೆಲಸ ಕ್ಯಾಲೆಂಡರ್</span><p>FPO publishes a seasonal demand calendar so labourers know when work is available nearby — reducing the pressure to migrate.</p></div>
+          <div class="ex"><strong>🤝 FPO Membership Path</strong><span class="ek kn">FPO ಸದಸ್ಯತ್ವ ಹಾದಿ</span><p>Landless labourers can become associate members of the FPO — getting access to insurance, credit, and skill programmes.</p></div>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <div class="acc-hdr" onclick="tog(this)">
+          <div class="acc-hdr-l"><span class="acc-em">🏆</span><div><div class="acc-ttl en-only">Champions — Examples</div><div class="acc-ttl kn-only kn">ಚಾಂಪಿಯನ್ಸ್ — ಉದಾಹರಣೆಗಳು</div><div class="acc-stl en-only">One champion can change 50 farmers' lives</div><div class="acc-stlkn kn-only kn">ಒಬ್ಬ ಚಾಂಪಿಯನ್ 50 ರೈತರ ಜೀವನ ಬದಲಾಯಿಸಬಹುದು</div></div></div>
+          <div class="acc-icon">+</div>
+        </div>
+        <div class="acc-body"><div class="ex-grid">
+          <div class="ex"><strong>🌐 Village Coordinators</strong><span class="ek kn">ಗ್ರಾಮ ಸಂಯೋಜಕರು</span><p>One paid, trained champion per 50 members — helps peers with insurance, credit, inputs. A local go-to person who earns through the role.</p></div>
+          <div class="ex"><strong>🌱 Farmer Field Schools</strong><span class="ek kn">ರೈತ ಕ್ಷೇತ್ರ ಶಾಲೆ</span><p>Champions run learning sessions on their own farm — showing new techniques live. Peer-to-peer learning works better than classroom training.</p></div>
+          <div class="ex"><strong>🧪 Demo Plots</strong><span class="ek kn">ಪ್ರಾತ್ಯಕ್ಷಿಕ ಪ್ಲಾಟ್</span><p>Champions manage a small demonstration plot with new varieties and methods — FPO supplies inputs, results are shared with all members.</p></div>
+          <div class="ex"><strong>📱 Digital Helpers</strong><span class="ek kn">ಡಿಜಿಟಲ್ ಸಹಾಯಕರು</span><p>Tech-comfortable champions help other members use apps, file PM-KISAN claims, and check mandi prices — bridging the digital gap.</p></div>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section id="offerings">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl en-only">What Your FPO Gets</span>
+      <span class="lbl kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ನಿಮ್ಮ FPO ಗೆ ಏನು ಸಿಗುತ್ತದೆ</span>
+      <h2 class="h2 en-only">Four offerings.<br>All built for you.</h2>
+      <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ನಾಲ್ಕು ಸೇವೆಗಳು.<br>ನಿಮಗಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ.</h2>
+    </div>
+    <div class="off-grid rv d1">
+      <div class="off-card"><div class="off-n">01</div><div class="off-body"><div class="off-tag en-only">Learning &amp; Visits</div><div class="off-tag kn-only kn">ಕಲಿಕೆ ಮತ್ತು ಭೇಟಿ</div><h3 class="en-only">Exposure Tour + Expert Mentors</h3><h3 class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಭೇಟಿ ಪ್ರವಾಸ + ತಜ್ಞ ಮಾರ್ಗದರ್ಶನ</h3><p class="en-only">Visit India's best agri-enterprises. 6 months of mentorship from enterprise experts and market specialists included.</p><p class="kn-only kn">ಭಾರತದ ಅತ್ಯುತ್ತಮ ಕೃಷಿ ಉದ್ಯಮ ಭೇಟಿ. 6 ತಿಂಗಳ ತಜ್ಞ ಮಾರ್ಗದರ್ಶನ.</p></div></div>
+      <div class="off-card"><div class="off-n">02</div><div class="off-body"><div class="off-tag en-only">Infrastructure</div><div class="off-tag kn-only kn">ಮೂಲಸೌಕರ್ಯ</div><h3 class="en-only">Post-Harvest &amp; Processing</h3><h3 class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಕೊಯ್ಲೋತ್ತರ ಮತ್ತು ಸಂಸ್ಕರಣೆ</h3><p class="en-only">Technical and financial support for storage, sorting, and processing — turning raw produce into higher-value products.</p><p class="kn-only kn">ಶೇಖರಣೆ, ವಿಂಗಡಣೆ ಮತ್ತು ಸಂಸ್ಕರಣೆಗೆ ಬೆಂಬಲ.</p></div></div>
+      <div class="off-card"><div class="off-n">03</div><div class="off-body"><div class="off-tag en-only">Brand &amp; Market</div><div class="off-tag kn-only kn">ಬ್ರ್ಯಾಂಡ್ ಮತ್ತು ಮಾರುಕಟ್ಟೆ</div><h3 class="en-only">Packaging, Videos &amp; Online Sales</h3><h3 class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಪ್ಯಾಕೇಜಿಂಗ್, ವೀಡಿಯೊ ಮತ್ತು ಆನ್ಲೈನ್ ಮಾರಾಟ</h3><p class="en-only">Professional packaging, a farm story video, a website with QR code, and online market access — by our agency partner.</p><p class="kn-only kn">ವೃತ್ತಿಪರ ಪ್ಯಾಕೇಜಿಂಗ್, ವೀಡಿಯೊ, ವೆಬ್‌ಸೈಟ್ ಮತ್ತು ಆನ್ಲೈನ್ ಮಾರಾಟ.</p></div></div>
+      <div class="off-card"><div class="off-n">04</div><div class="off-body"><div class="off-tag en-only">Business Strategy</div><div class="off-tag kn-only kn">ವ್ಯಾಪಾರ ತಂತ್ರ</div><h3 class="en-only">Business Plan &amp; Market Strategy</h3><h3 class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ವ್ಯಾಪಾರ ಯೋಜನೆ ಮತ್ತು ಮಾರುಕಟ್ಟೆ ತಂತ್ರ</h3><p class="en-only">Market analysis, pricing strategy, and a financial roadmap — ready to attract buyers, government schemes, and institutional partners.</p><p class="kn-only kn">ಮಾರುಕಟ್ಟೆ ವಿಶ್ಲೇಷಣೆ, ಬೆಲೆ ತಂತ್ರ ಮತ್ತು ಹಣಕಾಸು ರಸ್ತೆ ನಕ್ಷೆ.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section id="how">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl en-only">How It Works</span>
+      <span class="lbl kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಹೇಗೆ ಕೆಲಸ ಮಾಡುತ್ತದೆ</span>
+      <h2 class="h2 en-only">Making, not studying.</h2>
+      <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ಮಾಡುತ್ತ ಕಲಿಯಿರಿ.</h2>
+    </div>
+    <div class="hsteps rv d1">
+      <div class="hs"><div class="sball">1</div><h3 class="en-only">Field Immersion</h3><div class="hkn kn">ಕ್ಷೇತ್ರ ಕಲಿಕೆ</div><p class="en-only">Work with mentors in your area — learning by doing in real clusters with COE FPO teams.</p><p class="kn-only kn">ತಜ್ಞರೊಂದಿಗೆ ನೇರ ಕ್ಷೇತ್ರ ಕಲಿಕೆ.</p></div>
+      <div class="hs"><div class="sball">2</div><h3 class="en-only">Exposure Tour</h3><div class="hkn kn">ಭೇಟಿ ಪ್ರವಾಸ</div><p class="en-only">National tour to India's best agri-enterprises — see success, bring ideas back, build ambition.</p><p class="kn-only kn">ಭಾರತದ ಉತ್ತಮ ಕೃಷಿ ಉದ್ಯಮ ಭೇಟಿ.</p></div>
+      <div class="hs"><div class="sball">3</div><h3 class="en-only">Build &amp; Test</h3><div class="hkn kn">ನಿರ್ಮಿಸಿ ಮತ್ತು ಪರೀಕ್ಷಿಸಿ</div><p class="en-only">Build brands, packaging, and business plans hands-on — with agencies, mentors, and experts.</p><p class="kn-only kn">ಬ್ರ್ಯಾಂಡ್, ಪ್ಯಾಕೇಜಿಂಗ್ ನಿರ್ಮಿಸಿ.</p></div>
+      <div class="hs"><div class="sball">4</div><h3 class="en-only">Share &amp; Scale</h3><div class="hkn kn">ಹಂಚಿ ಮತ್ತು ವಿಸ್ತರಿಸಿ</div><p class="en-only">All models published openly — any FPO in Karnataka can adapt and use them.</p><p class="kn-only kn">ಎಲ್ಲ ಮಾದರಿಗಳನ್ನು ಮುಕ್ತವಾಗಿ ಹಂಚಲಾಗುತ್ತದೆ.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">Timeline · <span class="kn">ವೇಳಾಪಟ್ಟಿ</span></span>
+      <h2 class="h2 en-only">Six months.<br>One shared ambition.</h2>
+      <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif;color:white">ಆರು ತಿಂಗಳು.<br>ಒಂದು ಸಾಮೂಹಿಕ ಗುರಿ.</h2>
+      <p class="sub en-only">From application to the Karnataka FPO Showcase — every phase is built around making, not studying.</p>
+      <p class="sub kn-only kn">ಅರ್ಜಿಯಿಂದ ಕರ್ನಾಟಕ FPO ಪ್ರದರ್ಶನದವರೆಗೆ — ಪ್ರತಿ ಹಂತವೂ ಕ್ರಿಯಾಶೀಲ.</p>
+    </div>
+    <div class="tl rv d1">
+      <div class="tl-line"></div>
+      <div class="tl-row key"><div class="tl-d">Jun 2026</div><div class="tl-dot"></div><div class="tl-c"><h3 class="en-only">Applications Open</h3><h3 class="kn-only kn">ಅರ್ಜಿ ಸ್ವೀಕಾರ ಆರಂಭ</h3><span class="tkn kn-only kn">ಅರ್ಜಿ ತೆರೆಯಲಾಗಿದೆ</span><p class="en-only">Apply now. Every FPO that applies receives a free Needs Assessment Profile — selected or not.</p><p class="kn-only kn">ಈಗ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ. ಆಯ್ಕೆ ಆಗಲಿ ಬಿಡಲಿ — ಪ್ರತಿ FPO ಗೆ ಉಚಿತ ವರದಿ.</p></div></div>
+      <div class="tl-row"><div class="tl-d">Jun 30</div><div class="tl-dot"></div><div class="tl-c"><h3 class="en-only">Application Deadline</h3><h3 class="kn-only kn">ಅರ್ಜಿ ಕೊನೆ ದಿನ</h3><p class="en-only">All applications close on June 30, 2026.</p><p class="kn-only kn">ಜೂನ್ 30, 2026 ರಂದು ಅರ್ಜಿ ಮುಚ್ಚುತ್ತದೆ.</p></div></div>
+      <div class="tl-row"><div class="tl-d">Jul 2026</div><div class="tl-dot"></div><div class="tl-c"><h3 class="en-only">Conversations</h3><h3 class="kn-only kn">ಸಂಭಾಷಣೆ</h3><p class="en-only">Shortlisted FPOs have a 30-minute call with the programme team — a conversation, not an interview.</p><p class="kn-only kn">ಆಯ್ಕೆ ಮಾಡಿದ FPO ಗಳಿಗೆ 30 ನಿಮಿಷ ಸಂಭಾಷಣೆ.</p></div></div>
+      <div class="tl-row key"><div class="tl-d">Late Jul</div><div class="tl-dot"></div><div class="tl-c"><h3 class="en-only">Cohort Confirmed</h3><h3 class="kn-only kn">20 FPO ಆಯ್ಕೆ</h3><p class="en-only">20 FPOs confirmed. Offer letters sent. Mentors assigned.</p><p class="kn-only kn">20 FPO ಗಳಿಗೆ ಆಯ್ಕೆ ಪತ್ರ — ತಜ್ಞ ನೇಮಕ.</p></div></div>
+      <div class="tl-row key"><div class="tl-d">Aug 2026</div><div class="tl-dot"></div><div class="tl-c"><h3 class="en-only">4-Day Onboarding Workshop</h3><h3 class="kn-only kn">4 ದಿನದ ಕಾರ್ಯಾಗಾರ</h3><p class="en-only">Residential workshop in Karnataka. Meet your mentor. Plan your 6 months. Design begins.</p><p class="kn-only kn">ಕರ್ನಾಟಕದಲ್ಲಿ ವಸತಿ ಕಾರ್ಯಾಗಾರ. ತಜ್ಞ ಭೇಟಿ. ವಿನ್ಯಾಸ ಆರಂಭ.</p></div></div>
+      <div class="tl-row"><div class="tl-d">Sep–Oct</div><div class="tl-dot"></div><div class="tl-c"><h3 class="en-only">Field Immersion + Exposure Tour</h3><h3 class="kn-only kn">ಕ್ಷೇತ್ರ ಕಲಿಕೆ + ರಾಷ್ಟ್ರೀಯ ಪ್ರವಾಸ</h3><p class="en-only">Work in clusters with mentors. National exposure tour to India's best agri-enterprises.</p><p class="kn-only kn">ತಜ್ಞರೊಂದಿಗೆ ಕ್ಲಸ್ಟರ್ ಕಲಿಕೆ. ರಾಷ್ಟ್ರೀಯ ಪ್ರವಾಸ.</p></div></div>
+      <div class="tl-row"><div class="tl-d">Nov–Dec</div><div class="tl-dot"></div><div class="tl-c"><h3 class="en-only">Build Phase</h3><h3 class="kn-only kn">ನಿರ್ಮಾಣ ಹಂತ</h3><p class="en-only">Build brand, packaging, business plan. Mid-review with programme team. Documentation sprint.</p><p class="kn-only kn">ಬ್ರ್ಯಾಂಡ್, ಪ್ಯಾಕೇಜಿಂಗ್, ವ್ಯಾಪಾರ ಯೋಜನೆ ನಿರ್ಮಾಣ.</p></div></div>
+      <div class="tl-row key"><div class="tl-d">Feb 2027</div><div class="tl-dot"></div><div class="tl-c"><h3 class="en-only">Karnataka FPO Showcase</h3><h3 class="kn-only kn">ಕರ್ನಾಟಕ FPO ಪ್ರದರ್ಶನ</h3><p class="en-only">Public showcase. Brands go live. Buyers connect with FPOs. All models shared openly for Karnataka.</p><p class="kn-only kn">ಸಾರ್ವಜನಿಕ ಪ್ರದರ್ಶನ. ಬ್ರ್ಯಾಂಡ್ ಆರಂಭ. ಖರೀದಿದಾರ ಸಂಪರ್ಕ. ಎಲ್ಲ ಮಾದರಿ ಹಂಚಿಕೆ.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO -->
+<section id="who">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl en-only">Who Can Apply</span>
+      <span class="lbl kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಯಾರು ಅರ್ಜಿ ಸಲ್ಲಿಸಬಹುದು</span>
+      <h2 class="h2 en-only">One requirement:<br>genuine ambition.</h2>
+      <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ಒಂದು ಅವಶ್ಯಕತೆ:<br>ನಿಜವಾದ ಮಹತ್ವಾಕಾಂಕ್ಷೆ.</h2>
+    </div>
+    <div class="who-banner rv d1">
+      <h3 class="en-only">Any registered FPO in Karnataka with strong ambition for all six segments.</h3>
+      <h3 class="kn-only" style="font-family:'Noto Sans Kannada',sans-serif;font-size:1.22rem;color:white;margin-bottom:.16rem">ಕರ್ನಾಟಕದ ಯಾವುದೇ ನೋಂದಾಯಿತ FPO — ಎಲ್ಲ ಆರು ವಿಭಾಗಗಳಿಗೂ ನಿಜವಾದ ಮಹತ್ವಾಕಾಂಕ್ಷೆ ಇರಬೇಕು.</h3>
+      <span class="wkn kn en-only">ಕರ್ನಾಟಕದ ಯಾವುದೇ ನೋಂದಾಯಿತ FPO — ಎಲ್ಲ ಆರು ವಿಭಾಗಕ್ಕೂ ಮಹತ್ವಾಕಾಂಕ್ಷೆ ಇರಬೇಕು.</span>
+      <p class="en-only">No prior enterprise experience required. What matters is a clear plan to grow income for every member type — especially the overlooked ones.</p>
+      <p class="kn-only kn">ಹಿಂದಿನ ಉದ್ಯಮ ಅನುಭವ ಬೇಡ. ಪ್ರತಿ ಸದಸ್ಯ ವಿಧದ ಆದಾಯ ಹೆಚ್ಚಿಸಲು ಸ್ಪಷ್ಟ ಯೋಜನೆ ಇರಬೇಕು.</p>
+    </div>
+    <div class="who-list rv d2">
+      <div class="wh"><div class="wh-dot">✓</div><div><h4 class="en-only">Registered FPO in Karnataka</h4><h4 class="kn-only kn">ನೋಂದಾಯಿತ FPO</h4><p class="en-only">Any registered FPO with at least 50 members in Karnataka</p><p class="kn-only kn">ಕರ್ನಾಟಕದಲ್ಲಿ ≥ 50 ಸದಸ್ಯರಿರುವ FPO</p></div></div>
+      <div class="wh"><div class="wh-dot">✓</div><div><h4 class="en-only">Ideas for all six segments</h4><h4 class="kn-only kn">ಆರು ವಿಭಾಗಕ್ಕೂ ಯೋಜನೆ</h4><p class="en-only">Genuine ambition for every member — not just large landholders</p><p class="kn-only kn">ಪ್ರತಿ ಸದಸ್ಯನಿಗೂ ನಿಜವಾದ ಯೋಜನೆ</p></div></div>
+      <div class="wh"><div class="wh-dot">✓</div><div><h4 class="en-only">Willingness to work hard</h4><h4 class="kn-only kn">ಕಷ್ಟಪಡಲು ಸಿದ್ಧ</h4><p class="en-only">6 months of genuine engagement — not just attending, but building</p><p class="kn-only kn">6 ತಿಂಗಳ ನಿಜವಾದ ತೊಡಗಿಸಿಕೊಳ್ಳುವಿಕೆ</p></div></div>
+      <div class="wh"><div class="wh-dot">✓</div><div><h4 class="en-only">One full-time person</h4><h4 class="kn-only kn">ಒಬ್ಬ ಪೂರ್ಣ ಸಮಯ ವ್ಯಕ್ತಿ</h4><p class="en-only">Someone from your FPO who can engage full-time with the programme</p><p class="kn-only kn">ಕಾರ್ಯಕ್ರಮದಲ್ಲಿ ಪೂರ್ಣ ಸಮಯ ಭಾಗವಹಿಸಬಲ್ಲ ಒಬ್ಬ ವ್ಯಕ್ತಿ</p></div></div>
+      <div class="wh"><div class="wh-dot">✓</div><div><h4 class="en-only">Open to new thinking</h4><h4 class="kn-only kn">ಹೊಸ ಆಲೋಚನೆಗೆ ತೆರೆದ</h4><p class="en-only">Ready to challenge assumptions, try design thinking, and build differently</p><p class="kn-only kn">ವಿನ್ಯಾಸ ಚಿಂತನೆ ಮತ್ತು ಹೊಸ ವಿಧಾನಕ್ಕೆ ಸಿದ್ಧ</p></div></div>
+      <div class="wh"><div class="wh-dot">✓</div><div><h4 class="en-only">Will document and share</h4><h4 class="kn-only kn">ದಾಖಲಿಸಿ ಹಂಚಿಕೊಳ್ಳುತ್ತಾರೆ</h4><p class="en-only">Commit to sharing what works openly with all Karnataka FPOs</p><p class="kn-only kn">ಕರ್ನಾಟಕ ಎಲ್ಲ FPO ಗಳಿಗೆ ಮಾಹಿತಿ ಹಂಚಲು ಬದ್ಧತೆ</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEGACY -->
+<section id="legacy">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl en-only">What We Leave Behind</span>
+      <span class="lbl kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಉಳಿಯುವ ಫಲಿತಾಂಶ</span>
+      <h2 class="h2 en-only">Built for all<br>Karnataka FPOs.</h2>
+      <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ಎಲ್ಲ ಕರ್ನಾಟಕ FPO ಗಳಿಗಾಗಿ.</h2>
+    </div>
+    <div class="leg-grid rv d1">
+      <div class="leg-card"><div class="leg-ico">📖</div><div><h3 class="en-only">Open Playbook</h3><h3 class="kn-only kn">ಮುಕ್ತ ಆಟದ ಮಾದರಿ</h3><span class="lckn kn en-only">ಮುಕ್ತ ಆಟದ ಮಾದರಿ</span><p class="en-only">Every brand, business model, and design created during the programme is published openly — so any FPO in Karnataka can replicate it.</p><p class="kn-only kn">ಕಾರ್ಯಕ್ರಮದಲ್ಲಿ ರಚಿಸಿದ ಪ್ರತಿ ಬ್ರ್ಯಾಂಡ್ ಮತ್ತು ವ್ಯಾಪಾರ ಮಾದರಿ ಮುಕ್ತವಾಗಿ ಪ್ರಕಟಿಸಲಾಗುತ್ತದೆ.</p></div></div>
+      <div class="leg-card"><div class="leg-ico">💡</div><div><h3 class="en-only">Proven Enterprise Models</h3><h3 class="kn-only kn">ಸಾಬೀತಾದ ಉದ್ಯಮ ಮಾದರಿ</h3><span class="lckn kn en-only">ಅನುಸರಿಸಬಹುದಾದ ಮಾದರಿ</span><p class="en-only">No need to reinvent from scratch. Replicate what works across the 20 FPOs — faster, cheaper, and with lower risk.</p><p class="kn-only kn">ಮೊದಲಿನಿಂದ ಶುರು ಮಾಡಬೇಡಿ. 20 FPO ಗಳಲ್ಲಿ ಯಶಸ್ವಿ ಮಾದರಿ ಅನುಸರಿಸಿ.</p></div></div>
+      <div class="leg-card"><div class="leg-ico">👥</div><div><h3 class="en-only">Enterprise Support Network</h3><h3 class="kn-only kn">ಉದ್ಯಮ ಬೆಂಬಲ ಜಾಲ</h3><span class="lckn kn en-only">ತಜ್ಞರ ಜಾಲ</span><p class="en-only">A directory of trained mentors, market linkers, and enterprise specialists available to all Karnataka FPOs long after the programme ends.</p><p class="kn-only kn">ಕಾರ್ಯಕ್ರಮದ ನಂತರವೂ ಎಲ್ಲ ಕರ್ನಾಟಕ FPO ಗಳಿಗೆ ತಜ್ಞರ ಜಾಲ ಲಭ್ಯ.</p></div></div>
+      <div class="leg-card"><div class="leg-ico">🚀</div><div><h3 class="en-only">Karnataka as a Model</h3><h3 class="kn-only kn">ಕರ್ನಾಟಕ ಒಂದು ಮಾದರಿ</h3><span class="lckn kn en-only">ಭಾರತಕ್ಕೆ ಮಾದರಿ</span><p class="en-only">What works here becomes a template for FPOs across India — putting Karnataka at the centre of the FPO enterprise movement.</p><p class="kn-only kn">ಭಾರತದ FPO ಉದ್ಯಮ ಚಳವಳಿಯ ಕೇಂದ್ರವಾಗಿ ಕರ್ನಾಟಕ.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl">FAQ · <span class="kn">ಪ್ರಶ್ನೆಗಳು</span></span>
+      <h2 class="h2 en-only">Frequently asked<br>questions.</h2>
+      <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ಆಗಾಗ ಕೇಳಲಾಗುವ<br>ಪ್ರಶ್ನೆಗಳು.</h2>
+    </div>
+    <div class="faq-wrap rv d1">
+
+      <div class="fq">
+        <div class="fq-q" onclick="tf(this)"><div class="fq-qt"><div class="fq-en en-only">Does our FPO need prior enterprise experience?</div><div class="fq-en kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-weight:700">ನಮ್ಮ FPO ಗೆ ಹಿಂದಿನ ಉದ್ಯಮ ಅನುಭವ ಬೇಕೇ?</div></div><div class="fq-ico">+</div></div>
+        <div class="fq-a"><span class="en-only">No. The programme is open to any registered FPO in Karnataka. What matters is strong ambition across the six segments and readiness to work hard for 6 months. We are looking for genuine intent, not past achievements.</span><span class="fq-akn kn-only kn">ಬೇಡ. ಕರ್ನಾಟಕದ ಯಾವುದೇ ನೋಂದಾಯಿತ FPO ಅರ್ಜಿ ಸಲ್ಲಿಸಬಹುದು. 6 ತಿಂಗಳ ಕಠಿಣ ಪರಿಶ್ರಮಕ್ಕೆ ಸಿದ್ಧತೆ ಮತ್ತು ನಿಜವಾದ ಉದ್ದೇಶ — ಇಷ್ಟೇ ಬೇಕು.</span></div>
+      </div>
+
+      <div class="fq">
+        <div class="fq-q" onclick="tf(this)"><div class="fq-qt"><div class="fq-en en-only">Do FPO leaders need to stay in Karnataka during the programme?</div><div class="fq-en kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-weight:700">FPO ನಾಯಕರು ಕಾರ್ಯಕ್ರಮದ ಸಮಯದಲ್ಲಿ ಕರ್ನಾಟಕದಲ್ಲೇ ಇರಬೇಕೇ?</div></div><div class="fq-ico">+</div></div>
+        <div class="fq-a"><span class="en-only">The 4-day Onboarding Workshop is fully residential. After that, FPOs stay in their own areas and clusters — with periodic mentor visits, a national exposure tour, and review sessions. One designated person from your FPO should be able to engage full-time.</span><span class="fq-akn kn-only kn">4 ದಿನದ ಕಾರ್ಯಾಗಾರ ವಸತಿ ಸಹಿತ. ನಂತರ FPO ಗಳು ತಮ್ಮ ಪ್ರದೇಶದಲ್ಲೇ ಇರಬಹುದು — ತಜ್ಞ ಭೇಟಿ, ರಾಷ್ಟ್ರೀಯ ಪ್ರವಾಸ ಮತ್ತು ವಿಮರ್ಶೆ ಸೇರಿ. FPO ಯಿಂದ ಒಬ್ಬ ನಿರ್ದಿಷ್ಟ ವ್ಯಕ್ತಿ ಪೂರ್ಣ ಸಮಯ ತೊಡಗಿಸಿಕೊಳ್ಳಬೇಕು.</span></div>
+      </div>
+
+      <div class="fq">
+        <div class="fq-q" onclick="tf(this)"><div class="fq-qt"><div class="fq-en en-only">Will we receive any financial support?</div><div class="fq-en kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-weight:700">ನಮಗೆ ಯಾವುದಾದರೂ ಆರ್ಥಿಕ ಬೆಂಬಲ ಸಿಗುತ್ತದೇ?</div></div><div class="fq-ico">+</div></div>
+        <div class="fq-a"><span class="en-only">Yes. Each selected FPO receives a monthly engagement stipend to cover travel and time costs. The residential onboarding workshop and national exposure tour are fully covered by the programme. Post-harvest and processing grants of up to ₹2,00,000 are available for 10 selected FPOs.</span><span class="fq-akn kn-only kn">ಹೌದು. ಪ್ರತಿ ಆಯ್ಕೆ FPO ಗೆ ಮಾಸಿಕ ಭತ್ಯೆ ನೀಡಲಾಗುತ್ತದೆ. ವಸತಿ ಕಾರ್ಯಾಗಾರ ಮತ್ತು ರಾಷ್ಟ್ರೀಯ ಪ್ರವಾಸ ಖರ್ಚು ಕಾರ್ಯಕ್ರಮ ಭರಿಸುತ್ತದೆ. 10 ಆಯ್ಕೆ FPO ಗಳಿಗೆ ₹2,00,000 ವರೆಗೆ ಪ್ರಕ್ರಿಯಾ ಅನುದಾನ.</span></div>
+      </div>
+
+      <div class="fq">
+        <div class="fq-q" onclick="tf(this)"><div class="fq-qt"><div class="fq-en en-only">Who owns the brand and business plan created during the programme?</div><div class="fq-en kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-weight:700">ಕಾರ್ಯಕ್ರಮದಲ್ಲಿ ರಚಿಸಿದ ಬ್ರ್ಯಾಂಡ್ ಮತ್ತು ಯೋಜನೆ ಯಾರದ್ದು?</div></div><div class="fq-ico">+</div></div>
+        <div class="fq-a"><span class="en-only">Everything belongs entirely to your FPO. The brand, packaging, website, and business plan are yours to own and operate. The programme publishes the methods openly so other FPOs can learn — but your brand, income, and assets are yours.</span><span class="fq-akn kn-only kn">ಎಲ್ಲವೂ ನಿಮ್ಮ FPO ದ್ದು. ಬ್ರ್ಯಾಂಡ್, ಪ್ಯಾಕೇಜಿಂಗ್, ವೆಬ್‌ಸೈಟ್ ಮತ್ತು ವ್ಯಾಪಾರ ಯೋಜನೆ — ಎಲ್ಲವೂ ನಿಮ್ಮದು. ವಿಧಾನಗಳನ್ನು ಮಾತ್ರ ಇತರ FPO ಗಳಿಗೆ ಕಲಿಕೆಗಾಗಿ ಪ್ರಕಟಿಸಲಾಗುತ್ತದೆ.</span></div>
+      </div>
+
+      <div class="fq">
+        <div class="fq-q" onclick="tf(this)"><div class="fq-qt"><div class="fq-en en-only">What if we are not selected?</div><div class="fq-en kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-weight:700">ಆಯ್ಕೆ ಆಗದಿದ್ದರೆ?</div></div><div class="fq-ico">+</div></div>
+        <div class="fq-a"><span class="en-only">Every FPO that applies — selected or not — receives a free Needs Assessment Profile. It maps your FPO's strengths and gaps across all six segments, and gives you 3–5 immediate steps you can take on your own. This alone is worth applying for.</span><span class="fq-akn kn-only kn">ಆಯ್ಕೆ ಆಗಲಿ ಬಿಡಲಿ — ಅರ್ಜಿ ಸಲ್ಲಿಸಿದ ಪ್ರತಿ FPO ಗೆ ಉಚಿತ ಮೌಲ್ಯಮಾಪನ ವರದಿ ಸಿಗುತ್ತದೆ. ಇದೊಂದೇ ಅರ್ಜಿ ಸಲ್ಲಿಸಲು ಸಾಕಷ್ಟು ಕಾರಣ.</span></div>
+      </div>
+
+      <div class="fq">
+        <div class="fq-q" onclick="tf(this)"><div class="fq-qt"><div class="fq-en en-only">What happens after the programme ends in February 2027?</div><div class="fq-en kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-weight:700">ಫೆಬ್ರವರಿ 2027 ರಲ್ಲಿ ಕಾರ್ಯಕ್ರಮ ಮುಗಿದ ನಂತರ ಏನಾಗುತ್ತದೆ?</div></div><div class="fq-ico">+</div></div>
+        <div class="fq-a"><span class="en-only">The programme ends, but the work doesn't. Your brand, business plan, and buyer relationships continue. All models and methods are published openly for other FPOs to use. The mentor network remains accessible. And COE FPO continues to work with the cohort on scale and replication.</span><span class="fq-akn kn-only kn">ಕಾರ್ಯಕ್ರಮ ಮುಗಿಯುತ್ತದೆ, ಕೆಲಸ ಮುಂದುವರಿಯುತ್ತದೆ. ನಿಮ್ಮ ಬ್ರ್ಯಾಂಡ್, ಖರೀದಿದಾರ ಸಂಬಂಧ ಮತ್ತು ತಜ್ಞ ಜಾಲ ಮುಂದುವರಿಯುತ್ತದೆ.</span></div>
+      </div>
+
+      <div class="fq">
+        <div class="fq-q" onclick="tf(this)"><div class="fq-qt"><div class="fq-en en-only">How do we contact the programme team?</div><div class="fq-en kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-weight:700">ಕಾರ್ಯಕ್ರಮ ತಂಡವನ್ನು ಹೇಗೆ ಸಂಪರ್ಕಿಸಬಹುದು?</div></div><div class="fq-ico">+</div></div>
+        <div class="fq-a"><span class="en-only">Reach out to Rohith at <a href="mailto:rohith@selcofoundation.org" style="color:var(--grove);font-weight:600">rohith@selcofoundation.org</a> or call <a href="tel:+916361319022" style="color:var(--grove);font-weight:600">+91 63613 19022</a>. You can also apply directly through the Google Form and the team will get back to you within 2 working days.</span><span class="fq-akn kn-only kn">ರೋಹಿತ್ ಅವರನ್ನು rohith@selcofoundation.org ಗೆ ಇಮೇಲ್ ಮಾಡಿ ಅಥವಾ +91 63613 19022 ಗೆ ಕರೆ ಮಾಡಿ. ನೇರವಾಗಿ Google Form ಮೂಲಕ ಅರ್ಜಿ ಸಲ್ಲಿಸಬಹುದು.</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- APPLY -->
+<section id="apply">
+  <div class="ao1"></div><div class="ao2"></div>
+  <div class="wrap">
+    <div class="appin">
+      <div class="rv">
+        <span class="lbl">Apply Now · <span class="kn">ಈಗ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ</span></span>
+        <h2 class="h2 en-only">Apply your FPO.</h2>
+        <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ನಿಮ್ಮ FPO ಅರ್ಜಿ ಸಲ್ಲಿಸಿ.</h2>
+        <p class="sub en-only">Applications close June 30, 2026. Every FPO that applies — selected or not — receives a free Needs Assessment Profile.</p>
+        <p class="sub kn-only kn">ಜೂನ್ 30, 2026 ಕೊನೆ ದಿನ. ಎಲ್ಲ FPO ಗಳಿಗೂ ಉಚಿತ ಮೌಲ್ಯಮಾಪನ ವರದಿ.</p>
+        <div class="ablist">
+          <div class="abi"><div class="abidot">✦</div><div><p class="en-only">FPO registration details and how many members you have</p><span class="abkn kn">FPO ನೋಂದಣಿ ವಿವರ ಮತ್ತು ಸದಸ್ಯ ಸಂಖ್ಯೆ</span></div></div>
+          <div class="abi"><div class="abidot">✦</div><div><p class="en-only">What your FPO currently does and sells</p><span class="abkn kn">ನಿಮ್ಮ FPO ಪ್ರಸ್ತುತ ಏನು ಮಾಡುತ್ತದೆ ಮತ್ತು ಮಾರುತ್ತದೆ</span></div></div>
+          <div class="abi"><div class="abidot">✦</div><div><p class="en-only">Your ideas for all six member segments</p><span class="abkn kn">ಎಲ್ಲ ಆರು ಸದಸ್ಯ ವಿಭಾಗಗಳಿಗೆ ನಿಮ್ಮ ಯೋಜನೆ</span></div></div>
+          <div class="abi"><div class="abidot">✦</div><div><p class="en-only">The top challenges your FPO faces today</p><span class="abkn kn">ನಿಮ್ಮ FPO ಇಂದು ಎದುರಿಸುವ ಮುಖ್ಯ ಸವಾಲುಗಳು</span></div></div>
+          <div class="abi"><div class="abidot">✦</div><div><p class="en-only">Why you want to join — and what you want to build</p><span class="abkn kn">ಸೇರಲು ಬಯಸುವ ಕಾರಣ ಮತ್ತು ನಿರ್ಮಿಸಲು ಬಯಸುವುದು</span></div></div>
+        </div>
+      </div>
+      <div class="appbox rv d2">
+        <h3 class="en-only">Ready? Apply now.</h3>
+        <h3 class="kn-only" style="font-family:'Noto Sans Kannada',sans-serif;font-size:1.35rem;color:white;margin-bottom:.18rem">ಸಿದ್ಧರೇ?</h3>
+        <span class="appkn kn en-only">ಈಗ ಅರ್ಜಿ ಸಲ್ಲಿಸಿ.</span>
+        <p class="en-only">Applications close June 30, 2026. Every FPO that applies receives a free Needs Assessment Profile within 48 hours.</p>
+        <p class="kn-only kn">ಅರ್ಜಿ ಕೊನೆ ದಿನ ಜೂನ್ 30, 2026. 48 ಗಂಟೆಯಲ್ಲಿ ಉಚಿತ ಮೌಲ್ಯಮಾಪನ ವರದಿ.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3XB7xjXGr2Sjt28bHZgSgv0lwtdms6cr_1kHytWb_sBplHg/viewform?usp=publish-editor" target="_blank" class="bigbtn">
+          <span class="en-only">✦ Open Application Form</span><span class="kn-only kn">✦ ಅರ್ಜಿ ಫಾರ್ಮ್ ತೆರೆಯಿರಿ</span>
+          <span class="bbkn en-only">ಅರ್ಜಿ ಫಾರ್ಮ್ ತೆರೆಯಿರಿ →</span>
+        </a>
+        <a href="https://docs.google.com/presentation/d/1Tg7lkp9jDFtmY6ZgIG0SFMEqc8xoPcla/edit?slide=id.p1#slide=id.p1" target="_blank" class="secbtn">📊 <span class="en-only">View Programme Deck</span><span class="kn-only kn">ಕಾರ್ಯಕ್ರಮ ಡೆಕ್ ನೋಡಿ</span></a>
+        <div class="appnote"><span class="en-only">Deadline: June 30, 2026 · Karnataka FPOs</span><span class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಕೊನೆ ದಿನ: ಜೂನ್ 30, 2026 · ಕರ್ನಾಟಕ FPO</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT PARTNERS -->
+<section id="partners">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl en-only">About the Anchors</span>
+      <span class="lbl kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ಆಯೋಜಕ ಸಂಸ್ಥೆಗಳ ಬಗ್ಗೆ</span>
+      <h2 class="h2 en-only">Who is behind<br>this programme?</h2>
+      <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ಈ ಕಾರ್ಯಕ್ರಮ ಯಾರು ನಡೆಸುತ್ತಿದ್ದಾರೆ?</h2>
+      <p class="sub en-only">Two organisations deeply rooted in Karnataka's farming landscape — working together to power this programme.</p>
+      <p class="sub kn-only kn">ಕರ್ನಾಟಕ ಕೃಷಿ ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್‌ನಲ್ಲಿ ಆಳವಾದ ಬೇರು ಇರುವ ಎರಡು ಸಂಸ್ಥೆಗಳು.</p>
+    </div>
+    <div class="pwrap rv d1">
+      <div class="pc">
+        <div class="pctop">
+          <div class="pcla"><div class="pcico">🌿</div><div class="pcname">SELCO Foundation<span class="kn">ಸೆಲ್ಕೋ ಫೌಂಡೇಶನ್</span></div></div>
+          <span class="pctag">Programme Anchor · <span class="kn">ಕಾರ್ಯಕ್ರಮ ಆಂಕರ್</span></span>
+          <p class="pcdesc en-only">SELCO Foundation works to empower underserved communities through sustainable energy, climate-smart enterprise, and inclusive market access. With deep roots in Karnataka's farming communities, SELCO brings mentorship, technology expertise, and enterprise development to this programme.<span class="kn">ಸೆಲ್ಕೋ ಫೌಂಡೇಶನ್ ಕರ್ನಾಟಕ ರೈತ ಸಮುದಾಯಗಳಲ್ಲಿ ಸುಸ್ಥಿರ ಶಕ್ತಿ ಮತ್ತು ಹವಾಮಾನ ಉದ್ಯಮ ಅಭಿವೃದ್ಧಿ ಮಾಡುತ್ತದೆ.</span></p>
+          <p class="pcdesc kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-size:.87rem;color:rgba(255,255,255,.67);line-height:1.72">ಸೆಲ್ಕೋ ಫೌಂಡೇಶನ್ ಸಮಾಜದ ಅಂಚಿನ ಸಮುದಾಯಗಳನ್ನು ಸಮರ್ಥಗೊಳಿಸಲು ಸುಸ್ಥಿರ ಶಕ್ತಿ ಮತ್ತು ಹವಾಮಾನ-ಸ್ಮಾರ್ಟ್ ಉದ್ಯಮ ಪರಿಹಾರಗಳ ಮೂಲಕ ಕಾರ್ಯ ನಿರ್ವಹಿಸುತ್ತದೆ.</p>
+        </div>
+        <div class="pcbot"><a href="https://selcofoundation.org/" target="_blank" class="pclink">Visit selcofoundation.org</a><span class="pcest">Bangalore, Karnataka</span></div>
+      </div>
+      <div class="pc">
+        <div class="pctop">
+          <div class="pcla"><div class="pcico">🏛</div><div class="pcname">COE FPO<span class="kn" style="font-family:'Noto Sans Kannada',sans-serif">ಕೇಂದ್ರ ಉತ್ಕೃಷ್ಟತಾ ಸಂಸ್ಥೆ</span></div></div>
+          <span class="pctag">Government Partner · <span class="kn">ಸರ್ಕಾರಿ ಪಾಲುದಾರ</span></span>
+          <p class="pcdesc en-only">The Centre of Excellence for Farmer Producer Organisations (COE FPO) supports, trains, and strengthens FPOs across Karnataka — providing institutional backing, farmer network access, and policy linkages for FPOs to grow as enterprises.<span class="kn">COE FPO ಕರ್ನಾಟಕ ಉದ್ಯಮಗಳಾಗಿ ಬೆಳೆಯಲು FPO ಗಳಿಗೆ ಸಂಸ್ಥಾ ಬೆಂಬಲ, ರೈತ ಜಾಲ ಮತ್ತು ನೀತಿ ಸಂಪರ್ಕ ನೀಡುತ್ತದೆ.</span></p>
+          <p class="pcdesc kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-size:.87rem;color:rgba(255,255,255,.67);line-height:1.72">ಕೇಂದ್ರ ಉತ್ಕೃಷ್ಟತಾ ಸಂಸ್ಥೆ (COE FPO) ಕರ್ನಾಟಕದ FPO ಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ, ತರಬೇತಿ ನೀಡುತ್ತದೆ ಮತ್ತು ಉದ್ಯಮಗಳಾಗಿ ಬೆಳೆಯಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ.</p>
+        </div>
+        <div class="pcbot"><a href="https://coefpo.org/" target="_blank" class="pclink">Visit coefpo.org</a><span class="pcest">Karnataka, India</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS PORTAL -->
+<section id="solutions">
+  <div class="wrap">
+    <div class="rv">
+      <span class="lbl en-only">Technology for Farmers</span>
+      <span class="lbl kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif">ರೈತರಿಗಾಗಿ ತಂತ್ರಜ್ಞಾನ</span>
+      <h2 class="h2 en-only">Discover climate-smart<br>technologies for your farm.</h2>
+      <h2 class="h2 kn-only" style="font-family:'Noto Sans Kannada',sans-serif">ನಿಮ್ಮ ಜಮೀನಿಗಾಗಿ<br>ಹವಾಮಾನ-ಸ್ಮಾರ್ಟ್ ತಂತ್ರಜ್ಞಾನ.</h2>
+    </div>
+    <div class="sol-inner rv d1">
+      <div class="sol-main">
+        <div class="sol-top"><div class="pico">🌐</div><h3>Solutions Portal</h3><div class="skn kn">ಸೊಲ್ಯೂಷನ್ಸ್ ಪೋರ್ಟಲ್</div></div>
+        <div class="sol-body">
+          <p class="en-only">A free online resource showing hundreds of climate-smart technologies available for farmers — solar pumps, drip irrigation, drought-tolerant seeds, organic inputs, and digital tools. Browse what works for your crop, region, and budget.</p>
+          <p class="kn-only kn">ರೈತರಿಗೆ ಲಭ್ಯವಿರುವ ನೂರಾರು ಹವಾಮಾನ-ಸ್ಮಾರ್ಟ್ ತಂತ್ರಜ್ಞಾನಗಳನ್ನು ತೋರಿಸುವ ಉಚಿತ ಆನ್ಲೈನ್ ಸಂಪನ್ಮೂಲ.</p>
+          <div class="kn en-only">ನಿಮ್ಮ ಬೆಳೆ, ಪ್ರದೇಶ ಮತ್ತು ಬಜೆಟ್‌ಗೆ ಸೂಕ್ತ ತಂತ್ರಜ್ಞಾನ ಹುಡುಕಿ — ಸಂಪೂರ್ಣ ಉಚಿತ.</div>
+          <a href="https://solutionsportal.org/en" target="_blank" class="sollnk">🌐 <span class="en-only">Visit Solutions Portal →</span><span class="kn-only kn">ಪೋರ್ಟಲ್ ತೆರೆಯಿರಿ →</span></a>
+        </div>
+      </div>
+      <div class="sol-info">
+        <div class="si"><div class="sico">☀️</div><h4 class="en-only">Solar Energy</h4><h4 class="kn-only kn">ಸೌರ ಶಕ್ತಿ</h4><p class="en-only">Solar pumps and drying units — cut electricity costs and post-harvest losses.</p><p class="kn-only kn">ಸೌರ ಪಂಪ್ ಮತ್ತು ಒಣಗಿಸುವ ಘಟಕ.</p></div>
+        <div class="si"><div class="sico">💧</div><h4 class="en-only">Water Solutions</h4><h4 class="kn-only kn">ನೀರಿನ ಪರಿಹಾರ</h4><p class="en-only">Drip and sprinkler irrigation — 60% less water, better yields.</p><p class="kn-only kn">ಹನಿ ನೀರಾವರಿ — 60% ಕಡಿಮೆ ನೀರು.</p></div>
+        <div class="si"><div class="sico">🌾</div><h4 class="en-only">Climate Crops</h4><h4 class="kn-only kn">ಹವಾಮಾನ ಬೆಳೆ</h4><p class="en-only">Drought-tolerant varieties that survive unpredictable monsoon seasons.</p><p class="kn-only kn">ಬರ-ನಿರೋಧಕ ತಳಿಗಳು.</p></div>
+        <div class="si"><div class="sico">📱</div><h4 class="en-only">Digital Tools</h4><h4 class="kn-only kn">ಡಿಜಿಟಲ್ ಉಪಕರಣ</h4><p class="en-only">Crop advisory apps, market prices, and digital payment tools.</p><p class="kn-only kn">ಬೆಳೆ ಸಲಹೆ ಮತ್ತು ಡಿಜಿಟಲ್ ಪಾವತಿ.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="fmain">
+      <div class="fb">
+        <h3>Climate Smart Accelerator</h3>
+        <span class="fkn kn">ಹವಾಮಾನ ಸ್ಮಾರ್ಟ್ ಆಕ್ಸಿಲರೇಟರ್</span>
+        <p class="en-only">Empowering Karnataka's farming collectives through enterprise design, market access, and climate-smart practices. A programme of COE FPO and SELCO Foundation.</p>
+        <p class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-size:.8rem;color:rgba(255,255,255,.3);line-height:1.72">COE FPO ಮತ್ತು ಸೆಲ್ಕೋ ಫೌಂಡೇಶನ್ ಕಾರ್ಯಕ್ರಮ — ಕರ್ನಾಟಕ ರೈತ ಸಾಮೂಹಿಕ ಸಂಸ್ಥೆಗಳನ್ನು ಬಲಪಡಿಸಲಾಗುತ್ತದೆ.</p>
+        <div style="margin-top:1rem;padding:.6rem .82rem;background:rgba(82,183,136,.06);border:1px solid rgba(82,183,136,.12);border-radius:7px;font-size:.72rem;color:rgba(255,255,255,.28)">Cohort 01 · Aug 2026 – Feb 2027 · Karnataka</div>
+      </div>
+      <div>
+        <div class="fc"><h4>Contact · <span class="kn">ಸಂಪರ್ಕ</span></h4></div>
+        <a href="tel:+916361319022" class="fl"><div class="fi">📞</div><div class="fs">+91 63613 19022<br><span class="kn" style="font-size:.7rem;opacity:.62">WhatsApp ಕೂಡ ಮಾಡಬಹುದು</span></div></a>
+        <a href="mailto:rohith@selcofoundation.org" class="fl"><div class="fi">✉</div><span class="fs">rohith@selcofoundation.org</span></a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd3XB7xjXGr2Sjt28bHZgSgv0lwtdms6cr_1kHytWb_sBplHg/viewform?usp=publish-editor" target="_blank" class="fl"><div class="fi">📝</div><span class="fs"><span class="en-only">Apply Now</span><span class="kn-only kn">ಅರ್ಜಿ ಸಲ್ಲಿಸಿ</span></span></a>
+        <a href="https://docs.google.com/presentation/d/1Tg7lkp9jDFtmY6ZgIG0SFMEqc8xoPcla/edit?slide=id.p1#slide=id.p1" target="_blank" class="fl"><div class="fi">📊</div><span class="fs">Programme Deck</span></a>
+        <a href="https://solutionsportal.org/en" target="_blank" class="fl"><div class="fi">🌐</div><span class="fs">Solutions Portal</span></a>
+      </div>
+      <div>
+        <div class="fc"><h4>Organisations · <span class="kn">ಸಂಸ್ಥೆಗಳು</span></h4></div>
+        <div class="fp">
+          <p><strong><a href="https://selcofoundation.org/" target="_blank">SELCO Foundation ↗</a></strong><br>Programme anchor — climate technology, mentorship &amp; enterprise development</p>
+          <p style="margin-top:.85rem"><strong><a href="https://coefpo.org/" target="_blank">COE FPO ↗</a></strong><br>Centre of Excellence for Farmer Producer Organisations</p>
+          <p style="margin-top:.85rem"><strong><a href="https://solutionsportal.org/en" target="_blank">Solutions Portal ↗</a></strong><br>Free climate-smart technology resource for farmers</p>
+        </div>
+      </div>
+    </div>
+    <hr class="fdiv">
+    <div class="fbot">
+      <p class="en-only">© 2026 Climate Smart Accelerator · COE FPO × SELCO Foundation · Karnataka, India</p>
+      <p class="kn-only kn" style="font-family:'Noto Sans Kannada',sans-serif;font-size:.72rem;color:rgba(255,255,255,.2)">© 2026 ಹವಾಮಾನ ಸ್ಮಾರ್ಟ್ ಆಕ್ಸಿಲರೇಟರ್ · COE FPO × ಸೆಲ್ಕೋ ಫೌಂಡೇಶನ್ · ಕರ್ನಾಟಕ</p>
+      <p><a href="#top"><span class="en-only">Back to top ↑</span><span class="kn-only kn">ಮೇಲೆ ↑</span></a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function setLang(l){
+  document.documentElement.setAttribute('data-lang',l);
+  ['btn-en','mben'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('on',l==='en')});
+  ['btn-kn','mbkn'].forEach(id=>{const el=document.getElementById(id);if(el)el.classList.toggle('on',l==='kn')});
+  try{localStorage.setItem('csa-lang',l)}catch(e){}
+}
+(function(){try{const l=localStorage.getItem('csa-lang');if(l&&l!=='en')setLang(l)}catch(e){}})();
+window.addEventListener('scroll',()=>{
+  const d=document.documentElement;
+  document.getElementById('pgbar').style.width=(d.scrollTop/(d.scrollHeight-d.clientHeight)*100)+'%';
+  const f=document.getElementById('fcta');
+  d.scrollTop>500?f.classList.add('show'):f.classList.remove('show');
+},{passive:true});
+const ro=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('on')}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+const co=new IntersectionObserver(e=>e.forEach(x=>{
+  if(!x.isIntersecting||x.target.dataset.d)return;
+  x.target.dataset.d='1';
+  const t=+x.target.dataset.count;
+  const f=()=>{x.target._s=(x.target._s||0)+Math.ceil(t/24);if(x.target._s>=t){x.target.textContent=t;return}x.target.textContent=x.target._s;requestAnimationFrame(f)};f();
+}),{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(c=>co.observe(c));
+function tog(h){const it=h.closest('.acc-item'),op=it.classList.contains('open');document.querySelectorAll('.acc-item').forEach(i=>i.classList.remove('open'));if(!op)it.classList.add('open')}
+function tf(q){q.closest('.fq').classList.toggle('open')}
+document.getElementById('hbg').addEventListener('click',()=>document.getElementById('mobnav').classList.toggle('open'));
+function cl(){document.getElementById('mobnav').classList.remove('open')}
+window.addEventListener('scroll',()=>document.getElementById('mobnav').classList.remove('open'),{passive:true});
+</script>
+</body>
+</html>
